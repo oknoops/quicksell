@@ -1,1 +1,20 @@
-<%= current_user.sales.each do  %>
+<%= current_user.first_name %>
+<%= current_user.wallet_amount %>
+
+You bought :
+
+<% current_user.sales.each do |sale| %>
+<%= sale.product.price %>
+seller: <%= sale.product.user.first_name %>
+<% end %>
+
+<br>
+
+You have :
+<% current_user.products.each do |product| %>
+<%= product.name %>
+<% if product.sale %>
+  sold to
+  <%= product.sale.user.first_name %>
+  <% end  %>
+<% end %>

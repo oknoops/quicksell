@@ -4,6 +4,7 @@
 <%= p.pickup_address %>
 <%= p.pickup_time %>
 <%= p.status %>
+<%= link_to "more infos", product_path(p) %>
 <%= link_to "delete", products_path, method: :delete, data: { confirm: "Ya sure?" } %>
 <%= link_to "edit",edit_product_path(p) %>
 <% end  %>
