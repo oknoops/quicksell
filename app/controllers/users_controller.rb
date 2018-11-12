@@ -22,6 +22,18 @@ class UsersController < ApplicationController
   def dashboard
   end
 
+  def add_money
+    if current_user.wallet_amount.nil?
+      current_user.wallet_amount = 50
+      current_user.save
+    else
+      current_user.wallet_amount += 50
+      current_user.save
+
+    end
+    redirect_to dashboard_path
+  end
+
   private
 
   def set_user

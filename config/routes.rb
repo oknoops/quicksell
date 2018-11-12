@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       end
     end
   resources :users, except: [:destroy, :create, :new]
-  get 'dashboard', to: 'users#dashboard' #these are handled by devise
+  get 'dashboard', to: 'users#dashboard'
+  get 'payment', to: 'users#add_money' #these are handled by devise
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

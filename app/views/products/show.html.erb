@@ -1,3 +1,7 @@
 <%= @product.name %>
 <%= @product.description  %>
- <%= @product.pickup_time %>
+<%= @product.pickup_time %>
+<%= form_tag product_sales_path(@product, @sales) do %>
+  <%= hidden_field_tag 'product_id', @product.id, method: :post %>
+  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+<% end %>
