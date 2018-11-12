@@ -24,23 +24,9 @@ class UsersController < ApplicationController
 
   private
 
-  def average(user)
-    total = []
-    user.sales.each do |sale|
-      total << sale.review.rating
-    end
-    if total.size.zero?
-      return 0
-    else
-      return total.sum / total.size
-    end
-  end
-
   def set_user
     @user = User.find(params[:id])
   end
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :profile_picture, :phone_number, :address, :level)
-  end
+
 end
