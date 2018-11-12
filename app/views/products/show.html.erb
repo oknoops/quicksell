@@ -1,9 +1,11 @@
 <%= @product.name %>
-<%= @product.description  %>
-<%= @product.pickup_time %>
 <%= @product.description %>
 <%= @product.pickup_address %>
 <%= @product.pickup_time %>
 <%= @product.status %>
 <%= link_to "delete", products_path, method: :delete, data: { confirm: "Are you sure you want to delete this product?" } %>
 <%= link_to "edit",edit_product_path(@product) %>
+<%= form_tag product_sales_path(@product, @sales) do %>
+  <%= hidden_field_tag 'product_id', @product.id, method: :post %>
+  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+<% end %>

@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  before_action :set_sale_and_product, only: [:create, :destroy]
+  before_action :set_sale_and_product, only: [:destroy]
 
 
   def show
@@ -9,7 +9,11 @@ class SalesController < ApplicationController
     @sale = Sale.new
     @sale.user = current_user
     @sale.product = Product.find(params[:product_id])
-    redirect_to
+    if @sale.save
+      redirect_to dashboard_path
+    else
+      render 'product/show'
+    end
   end
 
   def destroy
