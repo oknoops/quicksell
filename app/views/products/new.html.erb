@@ -1,13 +1,1 @@
-<%= simple_form_for(@product) do |f| %>
-  <%= f.error_notification %>
-  <p>
-    <%= f.input :name %>.
-    <%= f.input :price %>
-    <%= f.input :description %>
-    <%= f.input :pickup_time %>
-    <%= f.input :pickup_address %>
-    <%= f.input :picture %>
-    <%= f.input :picture_cache, as: :hidden %>
-    <%= f.button :submit %>
-  </p>
-<% end %>
+<%= render "form" %>

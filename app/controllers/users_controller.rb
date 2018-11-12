@@ -19,6 +19,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def dashboard
+  end
+
   private
 
   def average(user)
