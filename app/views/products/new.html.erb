@@ -1,2 +1,13 @@
-<h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
+<%= simple_form_for(@product) do |f| %>
+  <%= f.error_notification %>
+  <p>
+    <%= f.input :name %>.
+    <%= f.input :price %>
+    <%= f.input :description %>
+    <%= f.input :pickup_time %>
+    <%= f.input :pickup_address %>
+    <%= f.input :picture %>
+    <%= f.input :picture_cache, as: :hidden %>
+    <%= f.button :submit %>
+  </p>
+<% end %>
