@@ -1,9 +1,21 @@
-<% @products.each do |p| %>
-<%= p.name %>
-<%= p.description %>
-<%= p.pickup_address %>
-<%= p.pickup_time %>
-<%= p.status %>
-<%= link_to "delete", products_path, method: :delete, data: { confirm: "Ya sure?" } %>
-<%= link_to "edit",edit_product_path(p) %>
-<% end  %>
+<div class = 'banner products'>
+  <h1> All the products</h1>
+</div>
+
+<div class = 'container'>
+  <div class = 'row'>
+    <% @products.each do |p| %>
+    <div class = 'col-sm-12 col-md-6'>
+      <div class= 'card-product'>
+        <div class = card-product-image style = "background-image: url(<%= cl_image_path p.picture %>);">
+
+        </div>
+        <div class = 'card-product-description'>
+          <div class = card-product-description-name> <%= p.name %> </div>
+          <div class = card-product-description-price> <%= p.price %> </div>
+        </div>
+      </div>
+    </div>
+    <% end  %>
+  </div>
+</div>
