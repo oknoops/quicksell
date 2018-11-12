@@ -28,6 +28,18 @@
   align-items: center;
 }
 
+.card-product-description-price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #bceb3c;
+  width: 120px;
+  height: 60px;
+  border-radius: 50px;
+}
+
 .card-product:hover{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
