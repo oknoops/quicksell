@@ -19,5 +19,7 @@ class Sale < ApplicationRecord
     user.save
     product.user.wallet_amount += product.price
     product.user.save
+    product.status = "pending"
+    product.save
   end
 end
