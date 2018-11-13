@@ -5,19 +5,17 @@
 }
 
 .dashboard-header-1{
-  font-family: 'Open Sans Condensed', sans-serif;
   font-size: 30px;
-  text-align: center;
+  text-align: left;
   margin: 20px;
-  color: white;
+  color: black;
 }
 
 .dashboard-header-2{
-  font-family: 'Open Sans Condensed', sans-serif;
   font-size: 30px;
-  text-align: center;
+  text-align: left;
   margin: 20px;
-  color: black;
+  color: white;
 }
 
 .grid-dashboard{
@@ -33,9 +31,9 @@
 .grid-item{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   color: #7CD4E0;
-  font-size: 30px;
   font-weight: bold;
   position: relative;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .grid-item-description{
@@ -51,15 +49,26 @@
   bottom: 30%;
   left: 50%;
   transform: translate(-50%);
+  font-size: 40px;
+  text-align: center;
+}
+
+.grid-name{
+  font-size: 15px;
 }
 
 .dashboard-wrapper-1{
   width: 100vw;
-  background-color: #0E6BA8;
-  padding-bottom: 20px;
+  padding: 20px;
 }
 
 .dashboard-wrapper-2{
   width: 100vw;
-  padding-bottom: 20px;
+  padding: 20px;
+  background-color: grey;
+}
+
+.wrapper-grid{
+  background-color: grey;
+  padding: 20px;
 }
