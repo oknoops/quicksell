@@ -94,4 +94,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Mailer
+  config.action_mailer.delivery_method     = :postmark
+  config.action_mailer.postmark_settings   = { api_key: ENV['0f72d21c-4ef0-4b1a-a1eb-a484325510f2'] }
+  config.action_mailer.default_url_options = { host: "qck.sale" }
 end

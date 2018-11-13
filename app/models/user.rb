@@ -22,5 +22,13 @@ class User < ApplicationRecord
     else
       return total.sum / total.size
     end
+
+  after_create :send_welcome_email
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
   end
 end
