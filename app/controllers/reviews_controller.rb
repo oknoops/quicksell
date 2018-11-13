@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_sale_and_review, only: [:create, :destroy]
+  before_action :set_sale_and_product, only: [:new, :create, :destroy]
 
   def new
     @review = Review.new
@@ -7,6 +7,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(params_review)
+    @review.sale = Sale.find(params[:sale_id])
+    @review.user = current_user
     if @review.save
       redirect_to user_path(@sale.user)
     else
@@ -25,8 +27,8 @@ class ReviewsController < ApplicationController
      params.require(:review).permit(:description, :rating)
   end
 
-  def set_sale_and_review
+  def set_sale_and_product
     @sale = Sale.find(params[:sale_id])
+    @product = Product.find(params[:product_id])
   end
-
 end
