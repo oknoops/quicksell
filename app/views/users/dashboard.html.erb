@@ -37,7 +37,7 @@
                   still has to be picked up by
                   <%= product.sale.user.first_name %>
                 <% end %>
-                <% if product.sale %>
+                <% if product.status == "sold" %>
                   sold to
                   <%= product.sale.user.first_name %>
                 <% end  %>
