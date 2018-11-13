@@ -44,3 +44,65 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+//---------------------------------------------------------------
+
+.card-product-dashboard{
+  border-radius: 10px;
+  margin: 10px;
+  position: relative;
+  height: 150px;
+  background-color: grey;
+}
+
+.card-product-dashboard-image{
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.card-product-dashboard-price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #bceb3c;
+  width: 120px;
+  height: 60px;
+  border-radius: 50px;
+  position: absolute;
+  top: 45px;
+  right: 10px;
+}
+
+.card-product-dashboard-name{
+  position: absolute;
+  top: 10px;
+  left: 180px;
+  font-weight: bold;
+}
+
+.card-product-dashboard-seller{
+  position: absolute;
+  top: 40px;
+  left: 180px;
+  font-weight: bold;
+}
+
+.card-product-dashboard-review{
+  position: absolute;
+  top: 70px;
+  left: 180px;
+  font-weight: bold;
+}
+
+.card-product-dashboard-details{
+  position: absolute;
+  top: 100px;
+  left: 180px;
+  font-weight: bold;
+}
+

@@ -4,35 +4,37 @@
   </div>
 </div>
 
-<div class = 'grid-dashboard'>
-  <div class = 'grid-item' >
-    <div class = 'grid-item-description'> <i class="fas fa-smile fa-2x"></i> </div>
-    <div class = 'grid-item-value'> Hello <%= current_user.first_name %>! </div>
-  </div>
+<div class = 'wrapper-grid'>
+  <div class = 'grid-dashboard'>
+    <div class = 'grid-item' >
+      <div class = 'grid-item-description'> <i class="fas fa-smile fa-2x"></i> </div>
+      <div class = 'grid-item-value grid-name'><%= current_user.first_name %>! </div>
+    </div>
 
-  <div class = 'grid-item'>
-    <div class = 'grid-item-description'> <i class="fas fa-money-bill-alt fa-2x"></i> </div>
-    <div class = 'grid-item-value'> <%= current_user.wallet %> € </div>
-  </div>
+    <div class = 'grid-item'>
+      <div class = 'grid-item-description'> <i class="fas fa-money-bill-alt fa-2x"></i> </div>
+      <div class = 'grid-item-value'> <%= current_user.wallet %> € </div>
+    </div>
 
-  <div class = grid-item>
-    <div class = 'grid-item-description'> <i class="fas fa-trophy fa-2x"></i> </div>
-    <div class = 'grid-item-value'> <%= current_user.level %> 5 </div>
-  </div>
+    <div class = grid-item>
+      <div class = 'grid-item-description'> <i class="fas fa-trophy fa-2x"></i> </div>
+      <div class = 'grid-item-value'> <%= current_user.level %> 5 </div>
+    </div>
 
-  <div class = 'grid-item'>
-    <div class = 'grid-item-description'> For sale </div>
-    <div class = 'grid-item-value'> <%= current_user.products.size %> </div>
-  </div>
+    <div class = 'grid-item'>
+      <div class = 'grid-item-description'> For sale </div>
+      <div class = 'grid-item-value'> <%= current_user.products.size %> </div>
+    </div>
 
-  <div class = 'grid-item'>
-    <div class = 'grid-item-description'> Sold </div>
-    <div class = 'grid-item-value'> 15 </div>
-  </div>
+    <div class = 'grid-item'>
+      <div class = 'grid-item-description'> Sold </div>
+      <div class = 'grid-item-value'> 15 </div>
+    </div>
 
-  <div class = 'grid-item'>
-    <div class = 'grid-item-description'> Bought </div>
-    <div class = 'grid-item-value'> 15 </div>
+    <div class = 'grid-item'>
+      <div class = 'grid-item-description'> Bought </div>
+      <div class = 'grid-item-value'> 15 </div>
+    </div>
   </div>
 </div>
 
@@ -43,20 +45,19 @@
         Products you bought
       </div>
       <% current_user.sales.each do |sale| %>
-        <div class = 'col-sm-12 col-md-4'>
-          <a href="/products/<%= sale.product.id %>" style = "text-decoration: none">
-            <div class= 'card-product'>
-              <div class = card-product-image style = "background-image: url(<%= cl_image_path sale.product.picture %>);">
-
+        <div class = 'col-sm-12'>
+          <div class = 'card-product-dashboard'>
+            <img src="<%= cl_image_path sale.product.picture %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+            <div class = 'card-product-dashboard-price'> <%= sale.product.price %> € </div>
+            <div class = 'card-product-dashboard-name'> <%= sale.product.name %> </div>
+            <div class = 'card-product-dashboard-seller'>Seller: <%= sale.product.user.first_name %></div>
+            <div class = 'card-product-dashboard-details'>
+              <%= link_to "More Details", product_path(sale.product) %>
             </div>
-            <div class = 'card-product-description'>
-              <div class = 'card-product-description-name'> <%= sale.product.name %>  seller: <%= sale.product.user.first_name %>
-              </div>
-              <div class = 'card-product-description-price'> <%= sale.product.price %> € </div>
+            <div class = 'card-product-dashboard-review'>
+              <%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %>
             </div>
           </div>
-          </a>
-          <%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %>
         </div>
       <%end%>
     </div>
@@ -76,8 +77,7 @@
               <div class = card-product-image style = "background-image: url(<%= cl_image_path product.picture %>);">
                 </div>
               <div class = 'card-product-description'>
-                <div class = 'card-product-description-name'> <%= product.name %>  seller: <%=product.user.first_name %>
-                </div>
+                <div class = 'card-product-description-name'> <%= product.name %></div>
                 <div class = 'card-product-description-price'> <%= product.price %> € </div>
               </div>
             </div>
