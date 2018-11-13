@@ -1,20 +1,54 @@
-<%= current_user.first_name %>
-<%= current_user.wallet_amount %>
+<div class="container">
+  <div class="row">
+      <%= current_user.first_name %>
+      <%= current_user.wallet_amount %>
 
-You bought :
+        You bought :
 
-<% current_user.sales.each do |sale| %>
-<%= sale.product.price %>
-seller: <%= sale.product.user.first_name %>
-<% end %>
+        <% current_user.sales.each do |sale| %>
+          <div class = 'col-sm-12 col-md-6'>
+            <a href="/products/<%= sale.product.id %>" style = "text-decoration: none">
+              <div class= 'card-product'>
+                <div class = card-product-image style = "background-image: url(<%= cl_image_path sale.product.picture %>);">
 
-<br>
+                </div>
+                <div class = 'card-product-description'>
+                  <div class = 'card-product-description-name'> <%= sale.product.name %>  seller: <%= sale.product.user.first_name %> </div>
+                  <div class = 'card-product-description-price'> <%= sale.product.price %> € </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        <%end%>
+  </div>
 
-You have :
-<% current_user.products.each do |product| %>
-<%= product.name %>
-<% if product.sale %>
-  sold to
-  <%= product.sale.user.first_name %>
-  <% end  %>
-<% end %>
+  <div class="row">
+    You have :
+    <% current_user.products.each do |product| %>
+      <div class = 'col-sm-12 col-md-6'>
+        <a href="/products/<%= product.id %>" style = "text-decoration: none">
+          <div class= 'card-product'>
+            <div class = card-product-image style = "background-image: url(<%= cl_image_path product.picture %>);">
+            </div>
+            <div class = 'card-product-description'>
+              <div class = 'card-product-description-name'>
+                <%= product.name %>
+                <% if product.status == "pending" %>
+                  still has to be picked up by
+                  <%= product.sale.user.first_name %>
+                <% end %>
+                <% if product.sale %>
+                  sold to
+                  <%= product.sale.user.first_name %>
+                <% end  %>
+              </div>
+              <div class = 'card-product-description-price'> <%= product.price %> €
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>
+
