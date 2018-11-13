@@ -1,54 +1,98 @@
-<div class="container">
-  <div class="row">
-      <%= current_user.first_name %>
-      <%= current_user.wallet_amount %>
+<div class = 'banner products'>
+  <div class = dashboard-title>
+    Your Dashboard
+  </div>
+</div>
 
-        You bought :
-
-        <% current_user.sales.each do |sale| %>
-          <div class = 'col-sm-12 col-md-6'>
-            <a href="/products/<%= sale.product.id %>" style = "text-decoration: none">
-              <div class= 'card-product'>
-                <div class = card-product-image style = "background-image: url(<%= cl_image_path sale.product.picture %>);">
-
-                </div>
-                <div class = 'card-product-description'>
-                  <div class = 'card-product-description-name'> <%= sale.product.name %>  seller: <%= sale.product.user.first_name %> </div>
-                  <div class = 'card-product-description-price'> <%= sale.product.price %> € </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        <%end%>
+<div class = 'grid-dashboard'>
+  <div class = 'grid-item' >
+    <div class = 'grid-item-description'> <i class="fas fa-smile fa-2x"></i> </div>
+    <div class = 'grid-item-value'> Hello <%= current_user.first_name %>! </div>
   </div>
 
-  <div class="row">
-    You have :
-    <% current_user.products.each do |product| %>
-      <div class = 'col-sm-12 col-md-6'>
-        <a href="/products/<%= product.id %>" style = "text-decoration: none">
-          <div class= 'card-product'>
-            <div class = card-product-image style = "background-image: url(<%= cl_image_path product.picture %>);">
-            </div>
-            <div class = 'card-product-description'>
-              <div class = 'card-product-description-name'>
-                <%= product.name %>
-                <% if product.status == "pending" %>
-                  still has to be picked up by
-                  <%= product.sale.user.first_name %>
-                <% end %>
-                <% if product.sale %>
-                  sold to
-                  <%= product.sale.user.first_name %>
-                <% end  %>
-              </div>
-              <div class = 'card-product-description-price'> <%= product.price %> €
-              </div>
-            </div>
-          </div>
-        </a>
+  <div class = 'grid-item'>
+    <div class = 'grid-item-description'> <i class="fas fa-money-bill-alt fa-2x"></i> </div>
+    <div class = 'grid-item-value'> <%= current_user.wallet_amount %> € </div>
+  </div>
+
+  <div class = grid-item>
+    <div class = 'grid-item-description'> <i class="fas fa-trophy fa-2x"></i> </div>
+    <div class = 'grid-item-value'> <%= current_user.level %> 5 </div>
+  </div>
+
+  <div class = 'grid-item'>
+    <div class = 'grid-item-description'> For sale </div>
+    <div class = 'grid-item-value'> <%= current_user.products.size %> </div>
+  </div>
+
+  <div class = 'grid-item'>
+    <div class = 'grid-item-description'> Sold </div>
+    <div class = 'grid-item-value'> 15 </div>
+  </div>
+
+  <div class = 'grid-item'>
+    <div class = 'grid-item-description'> Bought </div>
+    <div class = 'grid-item-value'> 15 </div>
+  </div>
+</div>
+
+<div class = 'dashboard-wrapper-1'>
+  <div class="container">
+    <div class="row">
+      <div class = 'dashboard-header-1'>
+        Your products for sale
       </div>
-    <% end %>
+      <% current_user.sales.each do |sale| %>
+        <div class = 'col-sm-12 col-md-4'>
+          <a href="/products/<%= sale.product.id %>" style = "text-decoration: none">
+            <div class= 'card-product'>
+              <div class = card-product-image style = "background-image: url(<%= cl_image_path sale.product.picture %>);">
+
+              </div>
+              <div class = 'card-product-description'>
+                <div class = 'card-product-description-name'> <%= sale.product.name %>  seller: <%= sale.product.user.first_name %> </div>
+                <div class = 'card-product-description-price'> <%= sale.product.price %> € </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<div class = 'dashboard-wrapper-2'>
+  <div class = 'container'>
+    <div class="row">
+      <div class = 'dashboard-header-2'>
+        Products you bought
+      </div>
+      <% current_user.products.each do |product| %>
+        <div class = 'col-sm-12 col-md-4'>
+          <a href="/products/<%= product.id %>" style = "text-decoration: none">
+            <div class= 'card-product'>
+              <div class = card-product-image style = "background-image: url(<%= cl_image_path product.picture %>);">
+              </div>
+              <div class = 'card-product-description'>
+                <div class = 'card-product-description-name'>
+                  <%= product.name %>
+                  <% if product.status == "pending" %>
+                    still has to be picked up by
+                    <%= product.sale.user.first_name %>
+                  <% end %>
+                  <% if product.sale %>
+                    sold to
+                    <%= product.sale.user.first_name %>
+                  <% end  %>
+                </div>
+                <div class = 'card-product-description-price'> <%= product.price %> €
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
