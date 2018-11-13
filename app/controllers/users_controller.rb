@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     else
       render :edit
     end
-    authorize @users
+    authorize @user
   end
 
   def dashboard
