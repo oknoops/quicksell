@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'products#index'
     resources :products do
       resources :sales, only: [:create, :destroy] do
-        resources :review, only: [:create, :new, :destroy]
+        resources :reviews, only: [:create, :new, :destroy]
       end
     end
   resources :users, except: [:destroy, :create, :new]
