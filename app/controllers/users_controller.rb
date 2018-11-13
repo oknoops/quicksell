@@ -25,12 +25,10 @@ class UsersController < ApplicationController
   def add_money
     if current_user.wallet_amount.nil?
       current_user.wallet_amount = 50
-      current_user.save
     else
       current_user.wallet_amount += 50
-      current_user.save
-
     end
+    current_user.save
     redirect_to dashboard_path
   end
 
@@ -40,5 +38,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :profile_description, :profile_picture, :address, :phone_number)
+  end
 end

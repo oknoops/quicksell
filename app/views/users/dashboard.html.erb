@@ -40,7 +40,7 @@
   <div class="container">
     <div class="row">
       <div class = 'dashboard-header-1'>
-        Your products for sale
+        Products you bought
       </div>
       <% current_user.sales.each do |sale| %>
         <div class = 'col-sm-12 col-md-4'>
@@ -53,6 +53,7 @@
                 <div class = 'card-product-description-name'> <%= sale.product.name %>  seller: <%= sale.product.user.first_name %> </div>
                 <div class = 'card-product-description-price'> <%= sale.product.price %> € </div>
               </div>
+
             </div>
           </a>
         </div>
@@ -65,31 +66,18 @@
   <div class = 'container'>
     <div class="row">
       <div class = 'dashboard-header-2'>
-        Products you bought
+       Your products for sale
       </div>
       <% current_user.products.each do |product| %>
         <div class = 'col-sm-12 col-md-4'>
           <a href="/products/<%= product.id %>" style = "text-decoration: none">
             <div class= 'card-product'>
               <div class = card-product-image style = "background-image: url(<%= cl_image_path product.picture %>);">
-              </div>
-              <div class = 'card-product-description'>
-                <div class = 'card-product-description-name'>
-                  <%= product.name %>
-                  <% if product.status == "pending" %>
-                    still has to be picked up by
-                    <%= product.sale.user.first_name %>
-                  <% end %>
-                  <% if product.sale %>
-                    sold to
-                    <%= product.sale.user.first_name %>
-                  <% end  %>
-                </div>
-                <div class = 'card-product-description-price'> <%= product.price %> €
-                </div>
-              </div>
-            </div>
-          </a>
+            </a>
+            <%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %>
+          </div>
+        <%end%>
+         </div>
         </div>
       <% end %>
     </div>

@@ -1,6 +1,7 @@
 class Sale < ApplicationRecord
   belongs_to :user
   belongs_to :product
+  has_one :review
 
   after_create :selling
 
