@@ -30,5 +30,6 @@ class ReviewsController < ApplicationController
   def set_sale_and_product
     @sale = Sale.find(params[:sale_id])
     @product = Product.find(params[:product_id])
+    authorize @review
   end
 end
