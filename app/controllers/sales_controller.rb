@@ -12,7 +12,7 @@ class SalesController < ApplicationController
     if @sale.save
       redirect_to dashboard_path
     else
-      render 'product/show'
+      redirect_to dashboard_path
     end
   end
 

@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :products
   has_many :sales
-
-  #validates_presence_of :first_name, :message => "Don't forget your first name"
-  #validates_presence_of :last_name, :message => "Don't forget your last name"
+  mount_uploader :profile_picture, ProfilePictureUploader
+  validates_presence_of :first_name, :message => "Don't forget your first name"
+  validates_presence_of :last_name, :message => "Don't forget your last name"
 
   def average
     total = []
