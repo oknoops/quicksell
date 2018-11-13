@@ -1,9 +1,4 @@
-class SalePolicy < ApplicationPolicy
-
-  def confirm?
-    true
-  end
-
+class PaymentsPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all

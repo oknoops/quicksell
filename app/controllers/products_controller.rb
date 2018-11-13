@@ -3,7 +3,15 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @products = policy_scope(Product).order(created_at: :desc)
+     if params[:query].present? && params[:category].present?
+      @products = policy_scope(Product).joins(:user).where("products.category like ? AND (products.name @@ ? OR products.description @@ ? OR users.last_name @@ ?)", params[:category], params[:query], params[:query], params[:query], params[:query], params[:query])
+    elsif params[:query].present?
+      @products = policy_scope(Product).joins(:user).where("products.name @@ ? OR products.description @@ ? OR users.first_name @@ ? OR users.last_name @@ ?", params[:query], params[:query], params[:query], params[:query])
+    elsif params[:category].present?
+      @products = policy_scope(Product).joins(:user).where("products.category ilike ?", params[:category])
+    else
+      @products = policy_scope(Product)
+    end
   end
 
   def show
