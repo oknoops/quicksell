@@ -12,7 +12,7 @@
       <!-- Links when logged in -->
       <%= link_to "add a product", new_product_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Add money", payment_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "#{current_user.wallet_amount} €", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "#{current_user.wallet} €", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">

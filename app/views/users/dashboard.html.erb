@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
       <%= current_user.first_name %>
-      <%= current_user.wallet_amount %>
+      <%= current_user.wallet %>
 
         You bought :
 
@@ -18,7 +18,9 @@
                 </div>
               </div>
             </a>
-            <%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %>
+            <% unless sale.review %>
+              <%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %>
+            <% end %>
           </div>
         <%end%>
   </div>

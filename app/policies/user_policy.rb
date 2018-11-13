@@ -6,6 +6,7 @@ class UserPolicy < ApplicationPolicy
   def dashboard?
     true
   end
+
   class Scope < Scope
     def resolve
       scope.all

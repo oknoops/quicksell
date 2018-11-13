@@ -25,10 +25,10 @@ class UsersController < ApplicationController
   end
 
   def add_money
-    if current_user.wallet_amount.nil?
-      current_user.wallet_amount = 50
+    if current_user.wallet.nil?
+      current_user.wallet = Money.new(5000)
     else
-      current_user.wallet_amount += 50
+      current_user.wallet += Money.new(5000)
     end
     current_user.save
     redirect_to dashboard_path
