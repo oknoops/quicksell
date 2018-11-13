@@ -12,7 +12,7 @@
 
   <div class = 'grid-item'>
     <div class = 'grid-item-description'> <i class="fas fa-money-bill-alt fa-2x"></i> </div>
-    <div class = 'grid-item-value'> <%= current_user.wallet_amount %> € </div>
+    <div class = 'grid-item-value'> <%= current_user.wallet %> € </div>
   </div>
 
   <div class = grid-item>
@@ -48,14 +48,15 @@
             <div class= 'card-product'>
               <div class = card-product-image style = "background-image: url(<%= cl_image_path sale.product.picture %>);">
 
-              </div>
-              <div class = 'card-product-description'>
-                <div class = 'card-product-description-name'> <%= sale.product.name %>  seller: <%= sale.product.user.first_name %> </div>
-                <div class = 'card-product-description-price'> <%= sale.product.price %> € </div>
-              </div>
-
             </div>
+            <div class = 'card-product-description'>
+              <div class = 'card-product-description-name'> <%= sale.product.name %>  seller: <%= sale.product.user.first_name %>
+              </div>
+              <div class = 'card-product-description-price'> <%= sale.product.price %> € </div>
+            </div>
+          </div>
           </a>
+          <%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %>
         </div>
       <%end%>
     </div>
@@ -66,20 +67,23 @@
   <div class = 'container'>
     <div class="row">
       <div class = 'dashboard-header-2'>
-       Your products for sale
+        Your products for sale
       </div>
       <% current_user.products.each do |product| %>
         <div class = 'col-sm-12 col-md-4'>
           <a href="/products/<%= product.id %>" style = "text-decoration: none">
             <div class= 'card-product'>
               <div class = card-product-image style = "background-image: url(<%= cl_image_path product.picture %>);">
-            </a>
-            <%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %>
-          </div>
-        <%end%>
-         </div>
+                </div>
+              <div class = 'card-product-description'>
+                <div class = 'card-product-description-name'> <%= product.name %>  seller: <%=product.user.first_name %>
+                </div>
+                <div class = 'card-product-description-price'> <%= product.price %> € </div>
+              </div>
+            </div>
+          </a>
         </div>
-      <% end %>
+      <%end%>
     </div>
   </div>
 </div>
