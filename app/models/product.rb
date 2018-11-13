@@ -6,5 +6,6 @@ class Product < ApplicationRecord
   validates_presence_of :pickup_time
   validates_presence_of :pickup_address
   has_one :sale
+  monetize :price_cents
   mount_uploader :picture, PictureUploader
 end

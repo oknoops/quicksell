@@ -3,12 +3,14 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    authorize @review
   end
 
   def create
     @review = Review.new(params_review)
     @review.sale = Sale.find(params[:sale_id])
     @review.user = current_user
+    authorize @review
     if @review.save
       redirect_to user_path(@sale.user)
     else
@@ -19,6 +21,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     redirect_to user_path(@sale.user)
+    authorize @review
   end
 
   private

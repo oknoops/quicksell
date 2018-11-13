@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_083722) do
+ActiveRecord::Schema.define(version: 2018_11_13_111210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
+    t.integer "price_cents"
     t.text "description"
     t.string "picture"
     t.datetime "pickup_time"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_083722) do
     t.string "last_name"
     t.text "profile_description"
     t.string "profile_picture"
-    t.integer "wallet_amount", default: 50
+    t.integer "wallet_cents", default: 50
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
