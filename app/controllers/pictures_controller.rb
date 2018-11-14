@@ -17,8 +17,8 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    @picture = Picture.find(params[:picture_id])
     @product = Product.find(params[:product_id])
+    @picture = Picture.find(params[:id])
     @picture.destroy
     authorize @picture
     redirect_to product_path(@product)
