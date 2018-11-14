@@ -24,7 +24,7 @@
         <div class = 'col-sm-12 col-md-6'>
           <a href="/products/<%= p.id %>" style = "text-decoration: none">
             <div class= 'card-product'>
-              <div class = card-product-image style = "background-image: url(<%= cl_image_path p.picture %>);">
+              <div class = card-product-image style = "background-image: url(<%= cl_image_path p.pictures.first.url %>);">
 
               </div>
               <div class = 'card-product-description'>
