@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 no-gutters-2">
-      <div class = "show-product-images" style = "background-image: url(<%= cl_image_path @product.picture %>);"></div>
+      <div class = "show-product-images" style = "background-image: url(<%= cl_image_path @product.pictures.first.url %>);"></div>
     </div>
   </div>
 </div>

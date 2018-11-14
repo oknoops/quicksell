@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-     if params[:query].present? && params[:category].present?
+    if params[:query].present? && params[:category].present?
       @products = policy_scope(Product).joins(:user).where("products.category like ? AND (products.name @@ ? OR products.description @@ ? OR users.last_name @@ ?)", params[:category], params[:query], params[:query], params[:query], params[:query], params[:query])
     elsif params[:query].present?
       @products = policy_scope(Product).joins(:user).where("products.name @@ ? OR products.description @@ ? OR users.first_name @@ ? OR users.last_name @@ ?", params[:query], params[:query], params[:query], params[:query])
@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
     @product.user = current_user
     authorize @product
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to new_product_picture_path(@product)
     else
       render :new
     end
@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :picture, :pickup_time, :pickup_address, :category)
+    params.require(:product).permit(:name, :description, :price, :pickup_time, :pickup_address, :category, :pictures => [])
   end
 
   def set_product

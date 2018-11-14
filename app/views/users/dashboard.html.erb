@@ -35,13 +35,14 @@
       <div class = 'col-sm-6 col-md-4'>
         <div class = 'grid-item' >
           <div class = 'grid-item-description'> Products sold </div>
-          <div class = 'grid-item-value'> 15 </div>
+          <div class = 'grid-item-value'> <%= current_user.products.count{ |p| p.sale } %>
+          </div>
         </div>
       </div>
       <div class = 'col-sm-6 col-md-4'>
         <div class = 'grid-item' >
           <div class = 'grid-item-description'> Products bought </div>
-          <div class = 'grid-item-value'> 15 </div>
+          <div class = 'grid-item-value'> <%= current_user.sales.count %> </div>
         </div>
       </div>
     </div>
