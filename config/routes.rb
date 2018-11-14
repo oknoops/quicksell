@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'pictures/new'
+  get 'pictures/create'
+  get 'pictures/destroy'
   devise_for :users
   root to: 'products#index'
     resources :products do
+      resources :pictures, only: [:new, :create, :destroy]
       resources :sales, only: [:create, :destroy] do
         resources :reviews, only: [:create, :new, :destroy]
       end
