@@ -1,0 +1,7 @@
+Add a pic
+
+<%= simple_form_for [@product, @picture] do |f| %>
+  <%= f.file_field :url %>
+  <%= f.hidden_field :url_cache %>
+<%= f.button :submit %>
+<% end  %>

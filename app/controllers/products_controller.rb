@@ -25,12 +25,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = current_user
-    @photo1 = params[:product][:pictures][0]
-    @photo2 = params[:product][:pictures][0]
     authorize @product
     if @product.save
-      raise
-      redirect_to product_path(@product)
+      redirect_to new_product_picture_path(@product)
     else
       render :new
     end

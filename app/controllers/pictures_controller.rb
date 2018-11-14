@@ -1,0 +1,32 @@
+class PicturesController < ApplicationController
+  def new
+    @picture = Picture.new
+    @product = Product.find(params[:product_id])
+    authorize @picture
+  end
+
+  def create
+    @picture = Picture.new(picture_params)
+    @picture.product = Product.find(params[:product_id])
+    authorize @picture
+    if @picture.save
+      redirect_to product_path(@picture.product)
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @picture = Picture.find(params[:picture_id])
+    @product = Product.find(params[:product_id])
+    @picture.destroy
+    authorize @picture
+    redirect_to product_path(@product)
+  end
+
+  private
+
+  def picture_params
+    params.require(:picture).permit(:url, :url_cache)
+  end
+end
