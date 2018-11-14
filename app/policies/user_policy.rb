@@ -11,6 +11,10 @@ class UserPolicy < ApplicationPolicy
     record == user
   end
 
+  def destroy?
+    record == user
+  end
+
   class Scope < Scope
     def resolve
       scope.all
