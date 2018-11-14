@@ -20,11 +20,10 @@ class PaymentsController < ApplicationController
       currency: 'eur',
       description: 'Custom donation'
     )
-
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
     current_user.wallet += @amount
     current_user.save
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
     redirect_to new_payment_path
   end
 end
