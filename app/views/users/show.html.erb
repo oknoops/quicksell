@@ -1,23 +1,67 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <%= @user.first_name %>
-      <br>
-      <%= @user.last_name %>
-      <br>
-      <%= @user.profile_description %>
-      <br>
-      <%= @user.address %>
-      <%= @user.phone_number %>
-      <%= @user.average %>
-      <% @user.products.each do |product| %>
-        <% if product.sale && product.sale.review %>
-          <%= product.sale.review.description %>  <%= product.sale.review.rating %>
-        <% end %>
-      <% end %>
 
-      <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
-    <img src="<%= cl_image_path @user.profile_picture if @user.profile_picture? %>" alt="">
+<div class="container">
+  <div class = 'title-welcome'>
+    <h1> <%= @user.first_name %>'s profile!</h1>
+  </div>
+
+  <div class="row">
+    <div class = 'information'>
+      <div class="col-md-5 col-xs-12">
+        <img src="<%= cl_image_path @user.profile_picture if @user.profile_picture? %>" alt="" class="avatar user-image">
+      </div>
+      <div class="col-md-7 col-xs-12">
+        <div class = 'user-description'>
+          <div class = 'title'>
+            <h2>Personal info</h2>
+          </div>
+          <div class = 'details'>
+            <h4> <strong>First Name:</strong> <%= @user.first_name %></h4>
+            <h4> <strong>Last Name:</strong> <%= @user.last_name %></h4>
+            <% if @user == current_user %>
+              <h4> <strong>Phone Number:</strong> <%= @user.phone_number %></h4>
+              <h4> <strong>Email address:</strong> <%= @user.email %> </h4>
+              <h4> <strong>Home Address:</strong> <%= @user.address %> </h4>
+            <% end %>
+            <h4>
+              <strong>Average Rating:</strong>
+              <% @user.average.times do%>
+                <i class='fas fa-star'></i>
+              <% end %>
+            </h4>
+          </div>
+            <div class = 'col-sm-6'>
+              <% if policy(@user).destroy? %>
+                <%= link_to 'Delete Profile', user_registration_path(@user), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?, all will be deleted. You will lose all the money" }  %>
+              <% end %>
+          </div>
+            <div class = 'col-sm-6'>
+              <% if policy(@user).update?%>
+              <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="user-description reviews">
+        <h2>Reviews</h2>
+        <%@user.products.each do |product| %>
+          <%if product.sale && product.sale.review %>
+            <img src="<%= cl_image_path product.picture %>" alt="" class="product-review-pic">
+            <%= product.name %> :
+            <%product.sale.review.rating.times do   %>
+              <i class='fas fa-star'></i>
+            <%end %>
+            <%= product.sale.review.description %>
+          <%end %>
+        <%end %>
+      </div>
     </div>
   </div>
 </div>
+
+
+
