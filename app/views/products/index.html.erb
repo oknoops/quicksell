@@ -5,7 +5,7 @@
 
 <div class = 'container'>
   <div class = 'row' id='list'>
-    <div class='col-sm-6 col-sm-offset-3'>
+    <div class='col-md-8 col-md-offset-3'>
       <div class='new-form'>
       <%= form_tag products_path(anchor: 'list'), method: :get do %>
         <%= text_field_tag :query,
@@ -13,8 +13,8 @@
           placeholder: "Find a product",
           class: 'form-controle'
         %>
-        <%= select_tag :price, "<option>>1 €</option><option>1-5 €</option><option>Bird </option><option>Reptile</option><option>Dragon</option><option>Unicorn</option><option>Rabbit</option><option>Fish</option>", include_blank: true%>
-        <%= submit_tag "Find Your Happiness"%>
+        <%= select_tag :category, options_for_select([ "Books and Magazine", "Movies and Video Games", "High-Tech","Toys and Youth","House and Pets","Beauty and Wellbeing","Retail", "Clothing and Fashion", "Sport and Leisure", "Cars and Mechanics", "Handmade"].sort), include_blank: true%>
+        <%= submit_tag "Find Your Happiness", class: "btn btn-primary"%>
       <% end %>
       </div>
     </div>
