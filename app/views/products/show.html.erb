@@ -29,11 +29,13 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
+      <button id="myBtn">
       <div class = 'product-show-details'>
         <i class="fas fa-map-marker-alt fa-3x"></i>
         <p><%= @product.pickup_address %></p>
       </div>
     </div>
+    </button>
     <div class="col-xs-12 col-sm-4">
       <div class = 'product-show-details'>
         <div class = 'logo-circle-effacer'>
@@ -87,4 +89,12 @@
     </div>
   </div>
 <% end %>
+
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-marker="<%= @markers.to_json %>"
+></div>
+
 

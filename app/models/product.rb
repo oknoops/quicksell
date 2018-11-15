@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   # validates_presence_of :picture
   validates_presence_of :pickup_time
   validates_presence_of :pickup_address
-  has_many :pictures
+  has_many :pictures, dependent: :delete_all
   has_one :sale
   monetize :price_cents
   geocoded_by :pickup_address

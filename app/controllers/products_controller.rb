@@ -3,10 +3,10 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:query].present? && params[:category].present?
-      @products = policy_scope(Product).joins(:user).where("products.category like ? AND (products.name @@ ? OR products.description @@ ? OR users.last_name @@ ?)", params[:category], params[:query], params[:query], params[:query], params[:query], params[:query])
-    elsif params[:query].present?
-      @products = policy_scope(Product).joins(:user).where("products.name @@ ? OR products.description @@ ? OR users.first_name @@ ? OR users.last_name @@ ?", params[:query], params[:query], params[:query], params[:query])
+    if params[:km].present? && params[:category].present?
+       @products = policy_scope(Product).joins(:user).where("products.category ilike ?", params[:category]).near(current_user.address, params[:km])
+    elsif params[:km].present?
+      @products = policy_scope(Product).near(current_user.address, params[:km])
     elsif params[:category].present?
       @products = policy_scope(Product).joins(:user).where("products.category ilike ?", params[:category])
     else
@@ -15,12 +15,18 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.near(current_user.address, params[:km])
+    @products = policy_scope(Product).joins(:user).where("products.name @@ ? OR products.description @@ ? OR users.first_name @@ ? OR users.last_name @@ ?", params[:query], params[:query], params[:query], params[:query])
     authorize @products
   end
 
   def show
     @picture = Picture.new
+    unless @product.longitude.nil?
+      @markers = [{
+        lng: @product.longitude,
+        lat: @product.latitude
+      }]
+    end
   end
 
   def new
@@ -33,7 +39,7 @@ class ProductsController < ApplicationController
     @product.user = current_user
     authorize @product
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to new_product_picture_path(@product)
     else
       render :new
     end
@@ -59,7 +65,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :pickup_time, :pickup_address, :category, :pictures => [])
+    params.require(:product).permit(:name, :description, :price, :pickup_time, :pickup_address, :category)
   end
 
   def set_product

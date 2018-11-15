@@ -11,6 +11,7 @@ class User < ApplicationRecord
   mount_uploader :profile_picture, ProfilePictureUploader
   validates_presence_of :first_name, :message => "Don't forget your first name"
   validates_presence_of :last_name, :message => "Don't forget your last name"
+  validates_presence_of :address, :message => "Don't forget your address"
 
   def average
     total = []
