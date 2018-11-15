@@ -81,4 +81,7 @@
   justify-content: center;
 }
 
+.carousel .carousel-control { visibility: hidden; }
+.carousel:hover .carousel-control { visibility: visible; }
+
 
