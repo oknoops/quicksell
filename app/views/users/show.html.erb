@@ -52,7 +52,7 @@
           <%if product.sale && product.sale.review %>
             <img src="<%= cl_image_path product.picture %>" alt="" class="product-review-pic">
             <%= product.name %> :
-            <%product.sale.review.rating.times do   %>
+            <% product.sale.review.rating.times do   %>
               <i class='fas fa-star'></i>
             <%end %>
             <%= product.sale.review.description %>
