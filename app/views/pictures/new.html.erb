@@ -1,8 +1,12 @@
-
-        <div class = 'col-sm-4 center'>
+<div class="container">
+  <div class="row">
+     <div class = 'col-sm-4 col-sm-offset-4'>
         <%= simple_form_for [@product, @picture] do |f| %>
-          <%= f.file_field :url, multiple: true %>
+          <%= f.file_field :url %>
           <%= f.hidden_field :url_cache %>
-          <%= f.button :submit, class: 'button-alternative' %>
+          <%= f.button :submit, 'Add a Pic', class: 'button-alternative' %>
         <% end  %>
       </div>
+  </div>
+</div>
+

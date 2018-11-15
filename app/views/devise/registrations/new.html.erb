@@ -14,6 +14,9 @@
     <%= f.input :last_name,
                 required: true,
                 input_html: { autocomplete: "last-name" } %>
+    <%= f.input :address,
+                required: true,
+                input_html: { autocomplete: "address"} %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
