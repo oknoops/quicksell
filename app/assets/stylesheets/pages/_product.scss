@@ -34,13 +34,14 @@
   margin: 20px;
 }
 
-.carousel-inner{
-  height: 100%;
+.carousel-inner {
+  display: flex;
+  height: 250px;
+  width: auto;
+  align-items: center;
+  justify-content: center;
 }
 
-.active{
-  object-fit: contain;
-}
 
 .logo-product-detail{
   margin-bottom: 15px;
