@@ -35,7 +35,11 @@
 }
 
 .carousel-inner{
-  height: 400px;
+  height: 100%;
+}
+
+.active{
+  object-fit: contain;
 }
 
 .logo-product-detail{
