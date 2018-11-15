@@ -12,7 +12,7 @@ class PicturesController < ApplicationController
     if @picture.save
       redirect_to product_path(@picture.product)
     else
-      render :new
+      redirect_to product_path(@picture.product)
     end
   end
 

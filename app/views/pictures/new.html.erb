@@ -1,7 +1,8 @@
-Add a pic
 
-<%= simple_form_for [@product, @picture] do |f| %>
-  <%= f.file_field :url %>
-  <%= f.hidden_field :url_cache %>
-<%= f.button :submit %>
-<% end  %>
+        <div class = 'col-sm-4 center'>
+        <%= simple_form_for [@product, @picture] do |f| %>
+          <%= f.file_field :url, multiple: true %>
+          <%= f.hidden_field :url_cache %>
+          <%= f.button :submit, class: 'button-alternative' %>
+        <% end  %>
+      </div>
