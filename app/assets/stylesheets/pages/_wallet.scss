@@ -1,22 +1,39 @@
 .wallet-title{
   background-color: grey;
   color: #7CD4E0;
-  height: 20vh;
+  height: 12vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 80px;
   border-bottom: solid black;
+  margin-top: 40px;
+  border-radius: 10px 10px 0 0;
 }
 
 .wallet-amount{
   background-color: grey;
   color: #7CD4E0;
-  height: 20vh;
+  height: 12vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  border-bottom: solid black;
+}
+
+.add-money{
+  background-color: grey;
+  color: #7CD4E0;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-form{
+  margin-top: 0 !important;
+  padding: 10px 0;
+  text-align: center;
 }
 

@@ -3,10 +3,17 @@
   background-color: grey;
 }
 
-.product-information{
+.product-information-1{
   background-color: #7CD4E0;
   margin-top: 10px;
   padding: 10px;
+  min-height: 200px;
+}
+
+.product-information-2{
+  margin-top: 10px;
+  padding: 10px;
+  min-height: 200px;
 }
 
 .no-gutters-2 {
@@ -18,20 +25,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-weight: bold;
   color: grey;
-}
-
-.logo-circle{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  background-color: white;
-
 }
 
 .new-form {
@@ -40,4 +36,14 @@
 
 .carousel-inner{
   height: 400px;
+}
+
+.logo-product-detail{
+  margin-bottom: 15px;
+}
+
+.profile-picture-avatar{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
 }
