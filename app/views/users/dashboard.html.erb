@@ -42,7 +42,20 @@
       <div class = 'col-sm-6 col-md-4'>
         <div class = 'grid-item' >
           <div class = 'grid-item-description'> Products bought </div>
-          <div class = 'grid-item-value'> <%= current_user.sales.count %> </div>
+          <div class = 'grid-item-value'><%=current_user.sales.count%></div>
+        </div>
+      </div>
+      <div class = 'col-sm-12'>
+        <div class = 'grid-item grid-item-rating'>
+          <div class = 'grid-item-description'> Rating</div>
+          <div class = 'grid-item-value'>
+            <% current_user.average.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% (5 - current_user.average).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -55,24 +68,28 @@
       <div class = 'dashboard-header-1'>
         Products you bought
       </div>
-      <% current_user.sales.each do |sale| %>
-        <div class = 'col-xs-12 col-sm-12'>
-          <div class = 'card-product-dashboard'>
-            <div class = 'col-xs-3 col-sm-3 center'>
-              <img src="<%= cl_image_path sale.product.pictures[0].url if sale.product.pictures[0] %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
-            </div>
-            <div class = 'col-xs-6 col-sm-6'>
-              <div><%= sale.product.name %></div>
-              <div>Seller: <%= sale.product.user.first_name %></div>
-              <div><%= link_to "More Details", product_path(sale.product) %></div>
-              <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %></div>
-            </div>
-            <div class = 'col-xs-3 col-sm-3 center'>
-              <div class = 'card-product-dashboard-price'> <%= sale.product.price %> € </div>
+      <% if current_user.sales.count == 0 %>
+        You did not buy any products...
+      <% else %>
+        <% current_user.sales.each do |sale| %>
+          <div class = 'col-xs-12 col-sm-12'>
+            <div class = 'card-product-dashboard'>
+              <div class = 'col-xs-3 col-sm-3 center'>
+                <img src="<%= cl_image_path sale.product.pictures[0].url if sale.product.pictures[0] %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+              </div>
+              <div class = 'col-xs-6 col-sm-6'>
+                <div><%= sale.product.name %></div>
+                <div>Seller: <%= sale.product.user.first_name %></div>
+                <div><%= link_to "More Details", product_path(sale.product) %></div>
+                <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %></div>
+              </div>
+              <div class = 'col-xs-3 col-sm-3 center'>
+                <div class = 'card-product-dashboard-price'> <%= sale.product.price %> € </div>
+              </div>
             </div>
           </div>
-        </div>
-      <%end%>
+        <%end%>
+      <% end %>
     </div>
   </div>
 </div>
