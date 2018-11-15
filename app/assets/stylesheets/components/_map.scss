@@ -41,6 +41,17 @@
   width: 100%;
 }
 
+#myBtn{
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+}
+
+#myBtn:hover{
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
 // .mapboxgl-canvas {
 //   width: 100% !important;
 //   height: 100% !important;

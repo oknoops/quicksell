@@ -42,28 +42,27 @@
   </div>
 </div>
 
-<div class="container product-information">
+<div class="container product-information-1">
   <div class="row">
     <div class="col-xs-12 col-sm-4">
       <div class = 'product-show-details'>
-        <i class="fas fa-money-bill-alt fa-3x"></i>
+        <i class="fas fa-money-bill-alt fa-3x logo-product-detail"></i>
         <p><%= @product.price %> €</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <button id="myBtn">
       <div class = 'product-show-details'>
-        <i class="fas fa-map-marker-alt fa-3x"></i>
-        <p><%= @product.pickup_address %></p>
+        <button id="myBtn">
+          <i class="fas fa-map-marker-alt fa-3x logo-product-detail"></i>
+          <p><%= @product.pickup_address %></p>
+        </button>
       </div>
     </div>
-    </button>
     <div class="col-xs-12 col-sm-4">
       <div class = 'product-show-details'>
-        <div class = 'logo-circle-effacer'>
-          <i class="fas fa-clock fa-3x"></i>
-        </div>
-        <p><%= @product.pickup_time.strftime("%d/%m/%Y -- %I:%M%p") %></p>
+        <i class="fas fa-clock fa-3x logo-product-detail"></i>
+        <p><%= @product.pickup_time.strftime("%d/%m/%Y") %></p>
+        <p><%= @product.pickup_time.strftime("%I:%M%p") %></p>
       </div>
     </div>
 
@@ -83,14 +82,30 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h2>Description</h2>
-      <%= @product.description %>
+      <div class = 'product-information-2'>
+        <h2>Description</h2>
+        <%= @product.description %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class = 'product-information-1'>
+        <h2>Owner</h2>
+        <img src="<%= @product.user.profile_picture %>" alt="" class = 'profile-picture-avatar'>
+        <%= @product.user.first_name %>
+        <%= @product.user.last_name %>
+        <%= @product.user.profile_description %>
+      </div>
     </div>
   </div>
 </div>
 
 <% if @product.user == current_user %>
-  <div class="container product-information">
+  <div class="container product-information-1">
     <div class="row">
       <div class="col-sm-12">
         <h2>Options</h2>
