@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'pictures/new'
-  get 'pictures/create'
-  get 'pictures/destroy'
+
+  get 'products/search', to: 'products#search'
   devise_for :users
   root to: 'products#index'
     resources :products do
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
   resources :users, except: [:destroy, :create, :new]
   get 'dashboard', to: 'users#dashboard'
   resources :payments, only: [:new, :create]
-  get 'payments/confirm', to: 'payments#confirm' #these are handled by devise
+  get 'payments/confirm', to: 'payments#confirm'
+   #these are handled by devise
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

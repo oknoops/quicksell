@@ -14,7 +14,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @products = Product.near(current_user.address, params[:km])
+    authorize @products
+  end
+
   def show
+    @picture = Picture.new
   end
 
   def new
@@ -27,7 +33,7 @@ class ProductsController < ApplicationController
     @product.user = current_user
     authorize @product
     if @product.save
-      redirect_to new_product_picture_path(@product)
+      redirect_to product_path(@product)
     else
       render :new
     end
@@ -48,6 +54,7 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to dashboard_path
   end
+
 
   private
 

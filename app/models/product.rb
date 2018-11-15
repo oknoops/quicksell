@@ -8,4 +8,6 @@ class Product < ApplicationRecord
   has_many :pictures
   has_one :sale
   monetize :price_cents
+  geocoded_by :pickup_address
+  after_validation :geocode, if: :will_save_change_to_pickup_address?
 end
