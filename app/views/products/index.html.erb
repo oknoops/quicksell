@@ -1,21 +1,21 @@
 
 
 <div class = 'banner products'>
-  <h1> All the products</h1>
+  <h1> Quick Sell</h1>
+
+  <h3> The fastest way to buy and sell your stuff!</h3>
+
+  <div class='new-form'>
+    <%= form_tag products_path(anchor: 'list'), method: :get do %>
+      <%= text_field_tag :km, nil, placeholder: 'Search km' %>
+      <%= select_tag :category, options_for_select([ "Books and Magazine", "Movies and Video Games", "High-Tech","Toys and Youth","House and Pets","Beauty and Wellbeing","Retail", "Clothing and Fashion", "Sport and Leisure", "Cars and Mechanics", "Handmade"].sort), include_blank: true%><br>
+      <%= submit_tag "Find Your Happiness", class: "button-banner-search"%>
+    <% end %>
+  </div>
 </div>
 
 <div class = 'container'>
   <div class = 'row' id='list'>
-    <div class='col-md-8 col-md-offset-3'>
-      <div class='new-form'>
-      <%= form_tag products_path(anchor: 'list'), method: :get do %>
-      <%= text_field_tag :km, nil, placeholder: 'Search km' %>
-        <%= select_tag :category, options_for_select([ "Books and Magazine", "Movies and Video Games", "High-Tech","Toys and Youth","House and Pets","Beauty and Wellbeing","Retail", "Clothing and Fashion", "Sport and Leisure", "Cars and Mechanics", "Handmade"].sort), include_blank: true%>
-        <%= submit_tag "Find Your Happiness", class: "btn btn-primary"%>
-      <% end %>
-      </div>
-    </div>
-
     <% @products.each do |p| %>
       <% if p.status == "for-sale" %>
         <div class = 'col-sm-12 col-md-6'>

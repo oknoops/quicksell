@@ -1,4 +1,4 @@
-.button-alternative{
+.button{
   height: 60px !important;
   width: 200px !important;
   background-color: grey;
@@ -21,4 +21,31 @@
   color: grey;
   margin-top: 30px;
   text-decoration: none;
+}
+
+.button-alternative{
+  height: 60px !important;
+  width: 200px !important;
+  background-color: grey;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  margin-top: 30px;
+  text-decoration: none!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.3;
+}
+
+.button-banner-search{
+  height: 60px;
+  width: 200px;
+  background-color: transparent;
+  color: black;
+  margin: 20px;
+  border-right: none;
+  border-left: none;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
