@@ -10,18 +10,9 @@
       <div class='new-form'>
       <%= form_tag products_path(anchor: 'list'), method: :get do %>
       <%= text_field_tag :km, nil, placeholder: 'Search km' %>
-
         <%= select_tag :category, options_for_select([ "Books and Magazine", "Movies and Video Games", "High-Tech","Toys and Youth","House and Pets","Beauty and Wellbeing","Retail", "Clothing and Fashion", "Sport and Leisure", "Cars and Mechanics", "Handmade"].sort), include_blank: true%>
         <%= submit_tag "Find Your Happiness", class: "btn btn-primary"%>
       <% end %>
-      <%= form_tag(products_search_path, method: "get") do %>
-            <%= text_field_tag :query,
-          params[:query],
-          placeholder: "Find a product",
-          class: 'form-controle'
-        %>
-            <button type="submit"><i class="fa fa-search"></i>
-          <% end %>
       </div>
     </div>
 

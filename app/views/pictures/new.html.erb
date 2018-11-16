@@ -1,12 +1,26 @@
+
 <div class="container">
   <div class="row">
-     <div class = 'col-sm-4 col-sm-offset-4'>
-        <%= simple_form_for [@product, @picture] do |f| %>
+    <div class = 'col-sm-4 col-sm-offset-4'>
+      <div class = 'wallet-title'>
+        <i class="fas fa-image"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <div class = 'row'>
+    <div class="col-sm-4 col-sm-offset-4">
+      <div class = add-money>
+        <div class="new-form">
+          <%= simple_form_for [@product, @picture] do |f| %>
+          <article>
           <%= f.file_field :url %>
           <%= f.hidden_field :url_cache %>
-          <%= f.button :submit, 'Add a Pic', class: 'button-alternative' %>
-        <% end  %>
+          </article>
+          <button id='donateButton' class = button-add-money>Add a Picture</button>
+        <% end %>
       </div>
+    </div>
   </div>
 </div>
-

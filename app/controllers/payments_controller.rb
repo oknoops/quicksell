@@ -13,14 +13,14 @@ class PaymentsController < ApplicationController
   def create
     @amount = Sale.new
     authorize @amount
-    @amount = params[:amount]
+    @amount = (params[:amount].to_f * 100).to_i
     Stripe::Charge.create(
       source: params[:stripeToken],
       amount: @amount,
       currency: 'eur',
       description: 'Custom donation'
     )
-    current_user.wallet += @amount
+    current_user.wallet += Money.new(@amount)
     current_user.save
   rescue Stripe::CardError => e
     flash[:error] = e.message

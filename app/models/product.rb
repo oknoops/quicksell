@@ -11,4 +11,18 @@ class Product < ApplicationRecord
   monetize :price_cents
   geocoded_by :pickup_address
   after_validation :geocode, if: :will_save_change_to_pickup_address?
+
+
+  def check_date
+    if pickup_time < Time.now && status == "pending"
+      self.status = "sold"
+      self.save!
+    elsif pickup_time < Time.now && status == "for-sale"
+      self.status = "expired"
+      self.save!
+    elsif pickup_time > Time.now && status == "expired"
+      self.status = "for-sale"
+      self.save!
+    end
+  end
 end
