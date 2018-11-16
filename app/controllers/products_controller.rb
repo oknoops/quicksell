@@ -49,6 +49,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product.check_date
     if @product.update(product_params)
       redirect_to product_path(@product)
     else

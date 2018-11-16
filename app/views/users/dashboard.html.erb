@@ -62,15 +62,11 @@
   </div>
 </div>
 
-<div class = 'dashboard-wrapper-1'>
+
+<% if current_user.sales.any? %>
+    <div class = 'dashboard-wrapper-1'>
   <div class="container">
     <div class="row align-items-center">
-      <div class = 'dashboard-header-1'>
-        Products you bought
-      </div>
-      <% if current_user.sales.count == 0 %>
-        You did not buy any products...
-      <% else %>
         <% current_user.sales.each do |sale| %>
           <div class = 'col-xs-12 col-sm-12'>
             <div class = 'card-product-dashboard'>

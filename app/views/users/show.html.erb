@@ -24,8 +24,11 @@
             <% end %>
             <h4>
               <strong>Average Rating:</strong>
-              <% @user.average.times do%>
-                <i class='fas fa-star'></i>
+              <% @user.average.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - @user.average).times do %>
+                <i class="far fa-star"></i>
               <% end %>
             </h4>
           </div>
@@ -50,7 +53,7 @@
         <h2>Reviews</h2>
         <%@user.products.each do |product| %>
           <%if product.sale && product.sale.review %>
-            <img src="<%= cl_image_path product.picture %>" alt="" class="product-review-pic">
+            <img src="<%= cl_image_path product.pictures[0] %>" alt="" class="product-review-pic">
             <%= product.name %> :
             <% product.sale.review.rating.times do   %>
               <i class='fas fa-star'></i>
