@@ -30,7 +30,7 @@
       <div class = 'col-sm-6 col-md-4'>
         <div class = 'grid-item' >
           <div class = 'grid-item-description'> Products for sale </div>
-          <div class = 'grid-item-value'> <%= current_user.products.size %> </div>
+          <div class = 'grid-item-value'> <%= current_user.products.count { |p| p.status == "for-sale" || p.status == "expired"} %> </div>
         </div>
       </div>
       <div class = 'col-sm-6 col-md-4'>
