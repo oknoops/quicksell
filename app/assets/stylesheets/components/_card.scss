@@ -81,15 +81,17 @@
   justify-content: center;
 }
 
+.white{
+  background-color: white;
+}
+
 .expired {
   background-image: url("https://vignette.wikia.nocookie.net/walking-war-robots/images/5/56/Expired.png/revision/latest?cb=20170606170948");
   background-size: cover;
   background-position: center;
+  height: 60px;
+  width: 120px;
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 30%;
   z-index: 3;
 }
 
