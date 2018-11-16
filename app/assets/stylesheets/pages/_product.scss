@@ -7,13 +7,14 @@
   background-color: #7CD4E0;
   margin-top: 10px;
   padding: 10px;
-  min-height: 200px;
+  min-height: 220px;
+
 }
 
 .product-information-2{
   margin-top: 10px;
   padding: 10px;
-  min-height: 200px;
+  min-height: 220px;
 }
 
 .no-gutters-2 {
@@ -51,4 +52,13 @@
   height: 200px;
   width: 200px;
   border-radius: 50%;
+}
+
+hr {
+    width: 90%;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 2em auto;
+    padding: 0;
 }
