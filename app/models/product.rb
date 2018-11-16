@@ -25,4 +25,31 @@ class Product < ApplicationRecord
       self.save!
     end
   end
+
+  def category_icon
+    case category
+    when "Beauty and Wellbeing"
+      "fas fa-lips"
+    when "Books and Magazine"
+      "fas fa-book-open"
+    when "Movies and Video Games"
+      "fas fa-film"
+    when "High-Tech"
+      "fas fa-tv"
+    when "Toys and Youth"
+      "fas fa-child"
+    when "House and Pets"
+      "fas fa-paw"
+    when "Retail"
+      "fas fa-shopping-cart"
+    when "Clothing and Fashion"
+      "fas fa-tshirt"
+    when "Sport and Leisure"
+      "fas fa-football-ball"
+    when "Cars and Mechanics"
+      "fas fa-car"
+    when "Handmade"
+      "fas fa-hand-holding-seedling"
+    end
+  end
 end

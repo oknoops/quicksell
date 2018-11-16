@@ -1,3 +1,29 @@
-<h2>Thank you!</h2>
-<p>Your donation of <strong><%= number_to_currency(@amount * 0.01) %></strong>
- has been received.</p>
+<div class="container">
+  <div class="row">
+    <div class = 'col-sm-4 col-sm-offset-4'>
+      <div class = 'wallet-title'>
+        <i class="fas fa-wallet"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class = 'row'>
+    <div class = 'col-sm-4 col-sm-offset-4'>
+      <div class = 'wallet-amount'>
+        Balance:
+        <%= current_user.wallet %> €
+      </div>
+    </div>
+  </div>
+
+  <div class = 'row'>
+    <div class="col-sm-4 col-sm-offset-4">
+      <div class = add-money>
+        <div class="new-form">
+        <h2>Thank you!</h2>
+        <p><strong><%= number_to_currency(@amount * 0.01) %></strong> has been added to your wallet !</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
