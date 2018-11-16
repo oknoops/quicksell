@@ -96,25 +96,105 @@
 
 <div class = 'dashboard-wrapper-2'>
   <div class = 'container'>
+
     <div class="row">
-      <div class = 'dashboard-header-2'>
-        Your products for sale
-      </div>
-      <% current_user.products.each do |product| %>
-        <div class = 'col-sm-12 col-md-4'>
-          <a href="/products/<%= product.id %>" style = "text-decoration: none">
-            <div class= 'card-product'>
-              <div class = card-product-image style = "background-image: url(<%= cl_image_path product.pictures[0].url if product.pictures[0]  %>);">
-                </div>
-              <div class = 'card-product-description'>
-                <div class = 'card-product-description-name'> <%= product.name %></div>
-                <div class = 'card-product-description-price'> <%= product.price %> € </div>
-              </div>
-            </div>
-          </a>
+      <% if current_user.products.any? {|p| p.status == "for-sale"} %>
+        <div class = 'dashboard-header-2'>
+          Your products for sale
         </div>
-      <%end%>
+        <% current_user.products.each do |product| %>
+          <% if product.status == "for-sale" %>
+            <div class = 'col-sm-12 col-md-4'>
+              <a href="/products/<%= product.id %>" style = "text-decoration: none">
+                <div class= 'card-product'>
+                  <div class = card-product-image style = "background-image: url(<%= cl_image_path product.pictures[0].url if product.pictures[0]  %>);">
+                    </div>
+                  <div class = 'card-product-description'>
+                    <div class = 'card-product-description-name'> <%= product.name %></div>
+                    <div class = 'card-product-description-price'> <%= product.price %> € </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          <% end %>
+        <%end%>
+      <%end %>
+      <% if current_user.products.any? {|p| p.status == "expired"} %>
+        <% current_user.products.each do |product| %>
+          <% if product.status == "expired" %>
+            <div class = 'col-sm-12 col-md-4'>
+              <a href="/products/<%= product.id %>" style = "text-decoration: none">
+                <div class= 'card-product'>
+                    <div class = card-product-image style = "background-image: url(<%= cl_image_path product.pictures[0].url if product.pictures[0]  %>);">
+                      </div>
+                  <div class="expired">
+                  </div>
+                  <div class = 'card-product-description'>
+                    <div class = 'card-product-description-name'> <%= product.name %></div>
+                    <div class = 'card-product-description-price'> <%= product.price %> € </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          <% end %>
+        <%end%>
+      <% end %>
     </div>
   </div>
 </div>
 
+<div class = 'dashboard-wrapper-1'>
+  <div class = 'container'>
+    <% if current_user.products.any? {|p| p.status == "pending"} %>
+      <div class="row">
+        <div class = 'dashboard-header-1'>
+          Your products to be retreived
+        </div>
+        <% current_user.products.each do |product| %>
+          <% if product.status == "pending" %>
+            <div class = 'col-sm-12 col-md-4'>
+              <a href="/products/<%= product.id %>" style = "text-decoration: none">
+                <div class= 'card-product'>
+                  <div class = card-product-image style = "background-image: url(<%= cl_image_path product.pictures[0].url if product.pictures[0]  %>);">
+                    </div>
+                  <div class = 'card-product-description'>
+                    <div class = 'card-product-description-name'> <%= product.name %></div>
+                    <div class = 'card-product-description-price'> <%= product.price %> € </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          <% end %>
+        <%end%>
+      </div>
+    <% end %>
+   </div>
+</div>
+
+<div class = 'dashboard-wrapper-2'>
+  <div class = 'container'>
+    <% if current_user.products.any? {|p| p.status == "sold"} %>
+      <div class="row">
+        <div class = 'dashboard-header-2'>
+          Your products already sold
+        </div>
+        <% current_user.products.each do |product| %>
+          <% if product.status == "sold" %>
+            <div class = 'col-sm-12 col-md-4'>
+              <a href="/products/<%= product.id %>" style = "text-decoration: none">
+                <div class= 'card-product'>
+                  <div class = card-product-image style = "background-image: url(<%= cl_image_path product.pictures[0].url if product.pictures[0]  %>);">
+                    </div>
+                  <div class = 'card-product-description'>
+                    <div class = 'card-product-description-name'> <%= product.name %></div>
+                    <div class = 'card-product-description-price'> <%= product.price %> € </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          <% end %>
+        <%end%>
+      </div>
+    <% end %>
+  </div>
+</div>

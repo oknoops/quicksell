@@ -7,12 +7,18 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+    <%= form_tag(products_search_path, method: "get") do %>
+      <%= text_field_tag :query,
+          params[:query],
+          placeholder: "Find a product"
+        %>
+    <% end %>
+
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
       <%= link_to "Add a product", new_product_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Add money", new_payment_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "#{current_user.wallet} €", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "#{current_user.wallet} €",  new_payment_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">

@@ -23,7 +23,7 @@
                   <img src="<%= cl_image_path picture.url %>" alt="Picture">
                 </div>
               <% end %>
-              <% if @product.user %>
+              <% if @product.user == current_user %>
                 <div class="carousel-caption">
                   <%= link_to 'Delete Image', product_picture_path(@product, picture), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure? Picture won't appear anymore" }  %>
                 </div>

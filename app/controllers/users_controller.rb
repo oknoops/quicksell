@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    current_user.products.each { |p|  p.check_date }
     authorize current_user
   end
 
