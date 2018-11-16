@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     authorize @review
     if @review.save
-      redirect_to user_path(@sale.user)
+      redirect_to user_path(@product.user)
     else
       render :new
     end

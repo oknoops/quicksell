@@ -7,7 +7,9 @@
 
   <div class='new-form'>
     <%= form_tag products_path(anchor: 'list'), method: :get do %>
-      <%= text_field_tag :km, nil, placeholder: 'Search km' %>
+      <% if user_signed_in? %>
+        <%= text_field_tag :km, nil, placeholder: 'Search km' %>
+      <% end %>
       <%= select_tag :category, options_for_select([ "Books and Magazine", "Movies and Video Games", "High-Tech","Toys and Youth","House and Pets","Beauty and Wellbeing","Retail", "Clothing and Fashion", "Sport and Leisure", "Cars and Mechanics", "Handmade"].sort), include_blank: true%><br>
       <%= submit_tag "Find Your Happiness", class: "button-banner-search"%>
     <% end %>
