@@ -103,18 +103,21 @@
   <div class="row">
     <div class="col-sm-12">
       <div class = 'product-information-1'>
-        <h2>Owner</h2>
-        <%= link_to cl_image_tag(@product.user.profile_picture, class: "profile-picture-avatar"), user_path(@product.user) %>
+        <div class="col-sm-3 col-sm-offset-1">
+          <%= link_to cl_image_tag(@product.user.profile_picture, class: "profile-picture-avatar"), user_path(@product.user) %>
+        </div>
+        <div class="col-sm-7">
+          <h4>Owner : <%= @product.user.first_name %>
+          <%= @product.user.last_name %></h4>
 
-        <%= @product.user.first_name %>
-        <%= @product.user.last_name %>
-        <%= @product.user.profile_description %>
-        <% @product.user.average.times do %>
-          <i class="fas fa-star"></i>
-        <% end %>
-        <% (5 - @product.user.average).times do %>
-          <i class="far fa-star"></i>
-        <% end %>
+          <%= @product.user.profile_description %>
+          <% @product.user.average.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <% (5 - @product.user.average).times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
