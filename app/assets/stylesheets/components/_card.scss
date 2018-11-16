@@ -6,7 +6,7 @@
 }
 
 .card-product-image{
-  background-color: yellow;
+  background-color: grey;
   background-size: cover;
   background-position: center;
   position: absolute;
@@ -91,6 +91,13 @@
   left: 0;
   bottom: 30%;
   z-index: 3;
+}
+
+.card-icons{
+  font-size: 100px;
+  text-align: center;
+  margin-top: 30px;
+  color: #7CD4E0;
 }
 
 .carousel .carousel-control { visibility: hidden; }

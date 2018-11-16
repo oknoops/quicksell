@@ -21,7 +21,7 @@
         <div class = 'col-sm-12 col-md-6'>
           <a href="/products/<%= p.id %>" style = "text-decoration: none">
             <div class= 'card-product'>
-              <% unless p.pictures.nil? %>
+              <% if p.pictures.any? %>
                 <% if p.pictures.length > 1 %>
                   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
 
@@ -61,12 +61,16 @@
                   </a>
                 </div>
               <% else %>
-                <div class = card-product-image style = "background-image: url(<%= cl_image_path p.pictures.first.url if p.pictures.first %>);">
+                <div class = card-product-image style = "background-image: url(<%= cl_image_path p.pictures.first.url %>);">
 
                 </div>
               <% end %>
             <% else %>
-              <div class = card-product-image> </div>
+              <div class = "card-product-image">
+                <div class = "card-icons" >
+                  <i class = "<%= p.category_icon %>"> </i>
+                </div>
+              </div>
             <% end %>
 
               <div class = 'card-product-description'>
