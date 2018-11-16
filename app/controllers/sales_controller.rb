@@ -12,9 +12,11 @@ class SalesController < ApplicationController
     @sale.product = Product.find(params[:product_id])
     authorize @sale
     if @sale.save
-      redirect_to dashboard_path
+      flash[:notice] = "Items succesfully bought"
+      redirect_to dashboard_path #TODO
     else
-      redirect_to dashboard_path
+      flash[:alert] = "You don't have enough money"
+      redirect_to product_path(@sale.product)
     end
   end
 

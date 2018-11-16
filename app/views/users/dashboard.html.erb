@@ -1,3 +1,4 @@
+
 <div class = 'banner products'>
   <div class = dashboard-title>
     Your Dashboard
@@ -80,7 +81,9 @@
                 <div><%= sale.product.name %></div>
                 <div>Seller: <%= sale.product.user.first_name %></div>
                 <div><%= link_to "More Details", product_path(sale.product) %></div>
-                <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %></div>
+                <% unless sale.review %>
+                  <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %></div>
+                <% end %>
               </div>
               <div class = 'col-xs-3 col-sm-3 center'>
                 <div class = 'card-product-dashboard-price'> <%= sale.product.price %> € </div>

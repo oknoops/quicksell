@@ -1,3 +1,4 @@
+
 <% if @product.pictures[0] %>
   <div class="container">
     <div class="row">
@@ -110,7 +111,7 @@
           <h4>Owner : <%= @product.user.first_name %>
           <%= @product.user.last_name %></h4>
 
-          <%= @product.user.profile_description %>
+          <p> <%= @product.user.profile_description %> </p>
           <% @product.user.average.times do %>
             <i class="fas fa-star"></i>
           <% end %>
