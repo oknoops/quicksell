@@ -92,6 +92,7 @@
     <div class="col-sm-12">
       <div class = 'product-information-2'>
         <h2>Description</h2>
+        <h5>Category:  <%= @product.category %> <i class = "<%= @product.category_icon %>"></i></h5>
         <%= @product.description %>
       </div>
     </div>
@@ -103,10 +104,17 @@
     <div class="col-sm-12">
       <div class = 'product-information-1'>
         <h2>Owner</h2>
-        <img src="<%= @product.user.profile_picture %>" alt="" class = 'profile-picture-avatar'>
+        <%= link_to cl_image_tag(@product.user.profile_picture, class: "profile-picture-avatar"), user_path(@product.user) %>
+
         <%= @product.user.first_name %>
         <%= @product.user.last_name %>
         <%= @product.user.profile_description %>
+        <% @product.user.average.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - @product.user.average).times do %>
+          <i class="far fa-star"></i>
+        <% end %>
       </div>
     </div>
   </div>

@@ -24,8 +24,11 @@
             <% end %>
             <h4>
               <strong>Average Rating:</strong>
-              <% @user.average.times do%>
-                <i class='fas fa-star'></i>
+              <% @user.average.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - @user.average).times do %>
+                <i class="far fa-star"></i>
               <% end %>
             </h4>
           </div>
