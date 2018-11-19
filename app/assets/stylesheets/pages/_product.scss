@@ -1,25 +1,18 @@
 .show-product{
   height: 400px;
-  background-color: grey;
 }
 
-.product-information-1{
-  background-color: #7CD4E0;
+.product-information{
   margin-top: 10px;
   padding: 10px;
   min-height: 220px;
 
-}
-
-.product-information-2{
-  margin-top: 10px;
-  padding: 10px;
-  min-height: 220px;
 }
 
 .no-gutters-2 {
   padding-right: 0px;
   padding-left: 0px;
+  margin-top: 10px;
 }
 
 .product-show-details{
@@ -28,7 +21,7 @@
   align-items: center;
   justify-content: space-between;
   font-weight: bold;
-  color: grey;
+  color: black;
 }
 
 .new-form {

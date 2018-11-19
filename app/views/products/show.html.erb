@@ -49,7 +49,7 @@
 
 <% end %>
 
-<div class="container product-information-1">
+<div class="container product-information">
   <div class="row">
     <div class="col-xs-12 col-sm-4">
       <div class = 'product-show-details'>
@@ -88,10 +88,12 @@
   </div>
 </div>
 
+<hr/>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <div class = 'product-information-2'>
+      <div class = 'product-information'>
         <h2>Description</h2>
         <h5>Category:  <%= @product.category %> <i class = "<%= @product.category_icon %>"></i></h5>
         <%= @product.description %>
@@ -100,10 +102,12 @@
   </div>
 </div>
 
+<hr/>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <div class = 'product-information-1'>
+      <div class = 'product-information'>
         <div class="col-sm-3 col-sm-offset-1">
           <%= link_to cl_image_tag(@product.user.profile_picture, class: "profile-picture-avatar"), user_path(@product.user) %>
         </div>
@@ -124,11 +128,13 @@
   </div>
 </div>
 
+<hr/>
+
 <% if @product.user == current_user %>
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <div class = 'product-information-1'>
+        <div class = 'product-information'>
           <h2>Options</h2>
           <div class = 'col-sm-4'>
             <%= link_to "Delete", product_path(@product), class: 'button', method: :delete, data: { confirm: "Are you sure you want to delete this product?" } %>

@@ -3,12 +3,14 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1rem;
+  padding: 2rem;
   background-color: white;
   color: black;
-  text-align: center;
+  text-align: top;
   display: flex;
   justify-content: space-around;
+  align-items: flex-start;
+  border-top: 1px solid black;
 }
 
 .column-footer{
@@ -16,7 +18,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .column-footer-details{
@@ -32,4 +34,8 @@
 
 .column-footer-social{
   font-size: 20px;
+}
+
+.column-footer p{
+  text-decoration: underline;
 }
