@@ -117,7 +117,7 @@
               <div class = 'card-product-dashboard'>
                 <div class = 'col-xs-3 col-sm-3 center'>
                   <% if product.pictures.any? %>
-                  <img src="<%= cl_image_path sale.product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                  <img src="<%= cl_image_path product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
                 <% else %>
                   <h2><i class = "<%= product.category_icon %>"> </i></h2>
                 <% end %>

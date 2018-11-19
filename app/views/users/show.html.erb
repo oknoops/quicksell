@@ -7,82 +7,94 @@
 
 <div class = 'container'>
   <div class = 'row'>
-    <div class = 'col-sm-4 col-sm-12'>
-      <div class = 'profile-information'>
-        <img src="<%= cl_image_path @user.profile_picture if @user.profile_picture? %>" alt="" class="avatar user-image">
+    <div class = 'col-sm-4 col-xs-12'>
+      <div class = 'grid-item profile-image' style = "background-image: url(<%= cl_image_path @user.profile_picture if @user.profile_picture? %>)" >
       </div>
     </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class = container>
-  <div class="row">
-    <div class = 'profile-information'>
-      <div class="col-md-5 col-xs-12">
-        <img src="<%= cl_image_path @user.profile_picture if @user.profile_picture? %>" alt="" class="avatar user-image">
+    <div class = 'col-sm-4 col-xs-12'>
+      <div class = 'grid-item'>
+        <div class = 'grid-item-description'>
+          <h4> <%= @user.first_name %> </h4>
+          <h4> <%= @user.last_name %> </h4>
+        </div>
       </div>
-      <div class="col-md-7 col-xs-12">
-        <div class = 'user-description'>
-          <div class = 'title'>
-            <h2>Personal info</h2>
+    </div>
+    <div class = 'col-sm-4 col-xs-12'>
+      <div class = 'grid-item'>
+        <div class = 'grid-item-description'>
+          Level
+        </div>
+        <div class = 'grid-item-value'>
+          <%= @user.level %>
+        </div>
+      </div>
+    </div>
+    <% if @user == current_user %>
+      <div class = 'col-sm-4 col-xs-12'>
+        <div class = 'grid-item'>
+          <div class = 'grid-item-description'>
+            Phone-Number
           </div>
-          <div class = 'details'>
-            <h4> <strong>First Name:</strong> <%= @user.first_name %></h4>
-            <h4> <strong>Last Name:</strong> <%= @user.last_name %></h4>
-            <% if @user == current_user %>
-              <h4> <strong>Phone Number:</strong> <%= @user.phone_number %></h4>
-              <h4> <strong>Email address:</strong> <%= @user.email %> </h4>
-              <h4> <strong>Home Address:</strong> <%= @user.address %> </h4>
+          <div class = 'grid-item-profile-value'>
+            <%= @user.phone_number %>
+          </div>
+        </div>
+      </div>
+      <div class = 'col-sm-4 col-xs-12'>
+        <div class = 'grid-item'>
+          <div class = 'grid-item-description'>
+            Email-Address
+          </div>
+          <div class = 'grid-item-profile-value'>
+            <%= @user.email %>
+          </div>
+        </div>
+      </div>
+      <div class = 'col-sm-4 col-xs-12'>
+        <div class = 'grid-item'>
+          <div class = 'grid-item-description'>
+            Home Address
+          </div>
+          <div class = 'grid-item-profile-value'>
+            <%= @user.address %>
+          </div>
+        </div>
+      </div>
+      <div class = 'col-sm-12'>
+        <div class = 'grid-item grid-item-rating'>
+          <div class = 'grid-item-description'> Rating</div>
+          <div class = 'grid-item-value'>
+            <% current_user.average.times do %>
+              <i class="fas fa-star"></i>
             <% end %>
-            <h4>
-              <strong>Average Rating:</strong>
-              <% @user.average.times do %>
-                <i class="fas fa-star"></i>
-              <% end %>
-              <% (5 - @user.average).times do %>
-                <i class="far fa-star"></i>
-              <% end %>
-            </h4>
-          </div>
-            <div class = 'col-sm-6'>
-              <% if policy(@user).destroy? %>
-                <%= link_to 'Delete Profile', user_registration_path(@user), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?, all will be deleted. You will lose all the money" }  %>
-              <% end %>
-          </div>
-            <div class = 'col-sm-6'>
-              <% if policy(@user).update?%>
-              <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
+            <% (5 - current_user.average).times do %>
+              <i class="fal fa-star"></i>
             <% end %>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
+      <div class = 'col-sm-6'>
+        <div class = 'grid-item grid-item-profile-options'>
+          <% if policy(@user).destroy? %>
+            <%= link_to 'Delete Profile', user_registration_path(@user), class: "button-banner-profile", method: :delete, data: { confirm: "Are you sure?, all will be deleted. You will lose all the money" }  %>
+          <% end %>
+        </div>
+      </div>
+      <div class = 'col-sm-6'>
+        <div class = 'grid-item grid-item-profile-options'>
+          <% if policy(@user).update?%>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: 'button-banner-profile' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<hr/>
+
+<div class = 'container'>
   <div class="row">
     <div class="col-md-12">
       <div class="user-description reviews">
@@ -113,6 +125,3 @@
     </div>
   </div>
 </div>
-
-
-
