@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'users#dashboard'
   resources :payments, only: [:new, :create]
   get 'payments/confirm', to: 'payments#confirm'
+  get 'payments/retrieve', to: 'payments#retrieve'
+  get 'payments/moneyback', to: 'payments#moneyback'
    #these are handled by devise
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

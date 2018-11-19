@@ -23,13 +23,24 @@ class User < ApplicationRecord
     else
       return total.sum / total.size
     end
+  end
+
+  def level_up?
+    if (sales.count / level > 10) || (products.count / level > 5)
+      self.level += 1
+      self.wallet += Money.new(2000)
+      self.save!
+      return true
+    else
+      return false
+    end
+  end
 
   after_create :send_welcome_email
 
   private
 
-  def send_welcome_email
-    UserMailer.welcome(self).deliver_now
+    def send_welcome_email
+      UserMailer.welcome(self).deliver_now
+    end
   end
-  end
-end

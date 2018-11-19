@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to user_path(@product.user)
     else
+      flash[:alert] = "Either you already reviewed this article or you entered invalid values"
       render :new
     end
   end

@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 
   def dashboard
     current_user.products.each { |p|  p.check_date }
+    if current_user.level_up?
+      flash[:notice] = "Congrats, you leveled up. Here are 20 €"
+    end
     authorize current_user
   end
 

@@ -4,7 +4,16 @@
     <%= f.input :price %>
     <%= f.input :description %>
     <%= f.input :category, collection: [ "Books and Magazine", "Movies and Video Games", "High-Tech","Toys and Youth","House and Pets","Beauty and Wellbeing","Retail", "Clothing and Fashion", "Sport and Leisure", "Cars and Mechanics", "Handmade"].sort %>
-    <%= f.input :pickup_time, :input_html => { :value => DateTime.now.strftime("%d/%m/%Y -- %I:%M%p")}, :as => :string %>
+    <%= f.label :pickup_time, 'Pickup Time' %>
+    <div class='input-group date' id='datetimepicker'>
+      <%= f.text_field :pickup_time, class: "form-control" %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+
+    <br>
     <%= f.input :pickup_address, input_html: {value: current_user.address} %>
     <%= f.button :submit, class: 'button' %>
 <% end %>
+

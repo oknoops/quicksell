@@ -4,6 +4,14 @@ class SalePolicy < ApplicationPolicy
     true
   end
 
+  def retrieve?
+    true
+  end
+
+  def moneyback?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.all
