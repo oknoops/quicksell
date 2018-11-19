@@ -20,6 +20,11 @@
 
 <div class = 'container'>
   <h3> Random Stuff </h3>
+  Sort by :
+  <%= form_tag products_path(anchor: 'list'), method: :get do %>
+  <%= select_tag :sort, options_for_select(["Price Ascending", "Price Descending", "Name", "Rating", "Distance"].sort), include_blank: true%>
+  <%= submit_tag "Sort"%>
+  <% end %>
   <div class = 'row' id='list'>
     <% @products.each do |p| %>
       <% if p.status == "for-sale" %>
