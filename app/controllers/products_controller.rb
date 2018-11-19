@@ -1,16 +1,30 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  helper_method :sort_direction
 
   def index
     if params[:km].present? && params[:category].present?
-       @products = policy_scope(Product).joins(:user).where("products.category ilike ?", params[:category]).near(current_user.address, params[:km])
+      @products = policy_scope(Product).joins(:user).where("products.category ilike ?", params[:category]).near(current_user.address, params[:km])
     elsif params[:km].present?
       @products = policy_scope(Product).near(current_user.address, params[:km])
     elsif params[:category].present?
       @products = policy_scope(Product).joins(:user).where("products.category ilike ?", params[:category])
     else
       @products = policy_scope(Product)
+    end
+
+    case params[:sort]
+    when "Name"
+      @products = @products.order("name ASC")
+    when "Rating"
+      @products = @products.sort_by { |product| product.user.average }
+    when "Distance"
+      @products = @products.sort_by { |product| product.distance_from(current_user.address) }
+    when "Price Ascending"
+      @products = @products.order("price_cents ASC")
+    when "Price Descending"
+      @products = @products.order("price_cents DESC")
     end
   end
 
@@ -65,6 +79,10 @@ class ProductsController < ApplicationController
 
 
   private
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
 
   def product_params
     params.require(:product).permit(:name, :description, :price, :pickup_time, :pickup_address, :category)
