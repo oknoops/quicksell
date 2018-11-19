@@ -4,7 +4,32 @@
   bottom: 0;
   left: 0;
   padding: 1rem;
-  background-color: grey;
-  color: #7CD4E0;
+  background-color: white;
+  color: black;
   text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.column-footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.column-footer-details{
+  text-decoration: none;
+  color: black;
+}
+
+.column-footer-details:hover{
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.column-footer-social{
+  font-size: 20px;
 }

@@ -3,7 +3,7 @@
 <div class = 'banner products'>
   <h1> Quick Sell</h1>
 
-  <h3> The fastest way to buy and sell your stuff!</h3>
+  <h3> Buy and sell easily, quickly and simply!</h3>
 
   <div class='new-form'>
     <%= form_tag products_path(anchor: 'list'), method: :get do %>
@@ -16,7 +16,10 @@
   </div>
 </div>
 
+<hr/>
+
 <div class = 'container'>
+  <h3> Random Stuff </h3>
   <div class = 'row' id='list'>
     <% @products.each do |p| %>
       <% if p.status == "for-sale" %>

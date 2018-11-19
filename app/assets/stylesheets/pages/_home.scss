@@ -7,6 +7,16 @@ html {
 body {
   position: relative;
   margin: 0;
-  padding-bottom: 10rem;
+  padding-bottom: 7rem;
   min-height: 100%;
+  background-color: white;
+}
+
+hr {
+    width: 90%;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 2em auto;
+    padding: 0;
 }

@@ -8,11 +8,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: black;
+}
+
+a.navbar-wagon-brand{
+  color: black;
+  text-decoration: none;
 }
 
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
+  color: black;
 }
 
 /* User Avatar */

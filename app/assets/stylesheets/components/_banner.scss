@@ -1,22 +1,25 @@
 .banner{
   width: 100vw;
   min-height: 30vh;
-  background-size: cover;
   display: flex;
   text-align: center;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   color: black;
+  background-color: white;
 }
 
 .products{
-  background-color: #7CD4E0;
-  display: flex;
-  flex-direction: column;
+  height: 70vh;
+  //background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url("https://images.pexels.com/photos/945982/pexels-photo-945982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 }
 
 .banner h1{
   font-size: 50px;
-  font-weight: bold;
+  //font-weight: bold;
+}
+
+.dashboard-banner{
 
 }

@@ -1,13 +1,11 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <i class="fas fa-globe"></i>
     Quick Sell
   <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-<i class="fab fa-searchengin fa-2x"></i>
     <%= form_tag(products_search_path, method: "get") do %>
       <%= text_field_tag :query,
           params[:query],

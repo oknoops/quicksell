@@ -1,8 +1,19 @@
 <div class = 'footer'>
-  <p>Problem with the website? Contact Gilles, it's his fault... if the website deserves praise it's Oscar</p>
-  <i class="fab fa-twitter-square"></i>
-  <i class="fab fa-facebook-square"></i>
-  <i class="fab fa-instagram"></i>
-  <i class="fab fa-linkedin"></i>
+  <div class = 'column-footer'>
+    <%= link_to "Add Product", new_product_path, class:"column-footer-details" %>
+    <%= link_to "My Dashboard", dashboard_path, class:"column-footer-details"%>
+    <%= link_to "My Profile Page", user_path(current_user), class:"column-footer-details" %>
+    <%= link_to "Sign Out", destroy_user_session_path, class:"column-footer-details" %>
+  </div>
+
+  <div class = 'column-footer'>
+    <p>Reach us on social media</p>
+    <div class = 'column-footer-social'>
+      <i class="fab fa-twitter-square"></i>
+      <i class="fab fa-facebook-square"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-linkedin"></i>
+    </div>
+  </div>
 </div>
 
