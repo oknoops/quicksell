@@ -3,9 +3,17 @@
     <div class="col-md-6">
       <a href="/products/<%= @product.id %>" style = "text-decoration: none">
         <div class= 'card-product'>
-          <div class = card-product-image style = "background-image: url(<%= cl_image_path @product.pictures[0] %>);">
+          <% if @product.pictures.any? %>
+            <div class = card-product-image style = "background-image: url(<%= cl_image_path @product.pictures[0] %>);">
 
-          </div>
+            </div>
+          <% else %>
+            <div class = "card-product-image">
+              <div class = "card-icons" >
+                <i class = "<%= @product.category_icon %>"> </i>
+              </div>
+            </div>
+          <% end %>
           <div class = 'card-product-description'>
             <div class = 'card-product-description-name'> <%= @product.name %> </div>
             <div class = 'card-product-description-price'> <%= @product.price %> € </div>
@@ -16,12 +24,19 @@
     <div class="col-md-6">
       <a href="/users/<%= @product.user.id %>" style = "text-decoration: none">
         <div class= 'card-product'>
-          <div class = card-product-image style = "background-image: url(<%= cl_image_path @product.user.profile_picture if @product.user.profile_picture %>);">
+          <div class = card-product-image style = "background-image: url(<%= cl_image_path @product.user.profile_picture if @product.user.profile_picture? %>);">
 
           </div>
           <div class = 'card-product-description'>
             <div class = 'card-product-description-name'> <%= @product.user.first_name %> </div>
-            <div class = 'card-product-description-price'> <%= @product.user.average %> </div>
+            <div class="user-average-card">
+            <% @product.user.average.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% (5 - @product.user.average).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+            </div>
           </div>
         </div>
       </a>
@@ -32,7 +47,7 @@
       <%= simple_form_for [@product, @sale, @review] do |f| %>
         <%= f.input :rating %>
         <%= f.input :description %>
-        <%= f.button :submit %>
+        <%= f.button :submit, class: "button" %>
       <% end %>
     </div>
   </div>
