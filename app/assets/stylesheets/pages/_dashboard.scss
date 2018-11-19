@@ -1,21 +1,13 @@
 .dashboard-title{
-  font-family: 'Open Sans Condensed', sans-serif;
   font-size: 50px;
   text-align: center;
 }
 
-.dashboard-header-1{
+.dashboard-header{
   font-size: 30px;
   text-align: left;
   margin: 20px;
   color: black;
-}
-
-.dashboard-header-2{
-  font-size: 30px;
-  text-align: left;
-  margin: 20px;
-  color: white;
 }
 
 .no-gutters {
@@ -34,10 +26,8 @@
   width: 100%;
   height: 200px;
   margin: 8px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  color: #7CD4E0;
-  font-weight: bold;
-  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.15);
+  color: black;
 }
 
 .grid-item-rating{
@@ -55,6 +45,17 @@
   padding-bottom: 20px;
 }
 
+.grid-item-description-button{
+  text-decoration: none;
+  color: black
+}
+
+.grid-item-description-button:hover{
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+}
+
 .grid-item-value{
   position: absolute;
   bottom: 20%;
@@ -68,18 +69,12 @@
   font-size: 15px;
 }
 
-.dashboard-wrapper-1{
+.dashboard-wrapper{
   width: 100vw;
   padding: 20px;
-}
-
-.dashboard-wrapper-2{
-  width: 100vw;
-  padding: 20px;
-  background-color: grey;
 }
 
 .wrapper-grid{
-  background-color: grey;
+  background-color: white;
   padding: 20px;
 }

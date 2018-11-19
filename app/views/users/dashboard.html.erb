@@ -1,9 +1,11 @@
 
-<div class = 'banner products'>
+<div class = 'banner dashboard-banner'>
   <div class = dashboard-title>
     Your Dashboard
   </div>
 </div>
+
+<hr/>
 
 <div class = 'wrapper-grid'>
   <div class = 'container'>
@@ -54,7 +56,7 @@
               <i class="fas fa-star"></i>
             <% end %>
             <% (5 - current_user.average).times do %>
-              <i class="far fa-star"></i>
+             <i class="fal fa-star"></i>
             <% end %>
           </div>
         </div>
@@ -63,12 +65,13 @@
   </div>
 </div>
 
+<hr/>
 
 <% if current_user.sales.any? %>
-  <div class = 'dashboard-wrapper-1'>
+  <div class = 'dashboard-wrapper'>
     <div class="container">
       <div class="row align-items-center">
-        <div class = 'dashboard-header-1'>
+        <div class = 'dashboard-header'>
           Products you bought
         </div>
         <% current_user.sales.each do |sale| %>
@@ -80,9 +83,9 @@
               <div class = 'col-xs-6 col-sm-6'>
                 <div><%= sale.product.name %></div>
                 <div>Seller: <%= sale.product.user.first_name %></div>
-                <div><%= link_to "More Details", product_path(sale.product) %></div>
+                <div><%= link_to "More Details", product_path(sale.product), class:"grid-item-description-button" %></div>
                 <% unless sale.review %>
-                  <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale) %></div>
+                  <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale), class:"grid-item-description-button" %></div>
                 <% end %>
               </div>
               <div class = 'col-xs-3 col-sm-3 center'>
@@ -97,22 +100,23 @@
 </div>
 
 <% if current_user.products.any? {|p| p.status == "for-sale" || p.status == "expired"} %>
-  <div class = 'dashboard-wrapper-2'>
+  <hr/>
+  <div class = 'dashboard-wrapper'>
     <div class = 'container'>
       <div class="row">
-        <div class = 'dashboard-header-2'>
+        <div class = 'dashboard-header'>
           Your products for sale
         </div>
         <% current_user.products.each do |product| %>
           <% if product.status == "for-sale" %>
             <div class = 'col-xs-12 col-sm-12'>
-              <div class = 'card-product-dashboard white'>
+              <div class = 'card-product-dashboard'>
                 <div class = 'col-xs-3 col-sm-3 center'>
                   <img src="<%= cl_image_path product.pictures[0].url if product.pictures[0] %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
                 </div>
                 <div class = 'col-xs-6 col-sm-6'>
                   <div><%= product.name %></div>
-                  <div><%= link_to "More Details", product_path(product) %></div>
+                  <div><%= link_to "More Details", product_path(product), class:"grid-item-description-button" %></div>
                 </div>
                 <div class = 'col-xs-3 col-sm-3 center'>
                   <div class = 'card-product-dashboard-price'> <%= product.price %> € </div>
@@ -122,7 +126,7 @@
           <% end %>
           <% if product.status == "expired" %>
             <div class = 'col-xs-12 col-sm-12'>
-              <div class = 'card-product-dashboard white'>
+              <div class = 'card-product-dashboard'>
                 <div class = 'col-xs-3 col-sm-3 center'>
                   <img src="<%= cl_image_path product.pictures[0].url if product.pictures[0] %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
                   <div class="expired"></div>
@@ -130,7 +134,7 @@
 
                 <div class = 'col-xs-6 col-sm-6'>
                   <div><%= product.name %></div>
-                  <div><%= link_to "More Details", product_path(product) %></div>
+                  <div><%= link_to "More Details", product_path(product), class:"grid-item-description-button" %></div>
                 </div>
                 <div class = 'col-xs-3 col-sm-3 center'>
                   <div class = 'card-product-dashboard-price'> <%= product.price %> € </div>
@@ -145,10 +149,11 @@
 <% end %>
 
 <% if current_user.products.any? {|p| p.status == "pending"} %>
-  <div class = 'dashboard-wrapper-1'>
+  <hr/>
+  <div class = 'dashboard-wrapper'>
     <div class = 'container'>
       <div class="row">
-        <div class = 'dashboard-header-1'>
+        <div class = 'dashboard-header'>
           Your products to be retreived
         </div>
         <% current_user.products.each do |product| %>
@@ -161,7 +166,7 @@
                 <div class = 'col-xs-6 col-sm-6'>
                   <div><%= product.name %></div>
                   <div> <%= product.sale.user.first_name %></div>
-                  <div><%= link_to "More Details", product_path(product) %></div>
+                  <div><%= link_to "More Details", product_path(product), class:"grid-item-description-button" %></div>
                 </div>
                 <div class = 'col-xs-3 col-sm-3 center'>
                   <div class = 'card-product-dashboard-price'> <%= product.price %> € </div>
@@ -175,17 +180,19 @@
   </div>
 <% end %>
 
+
 <% if current_user.products.any? {|p| p.status == "sold"} %>
-  <div class = 'dashboard-wrapper-2'>
+  <hr/>
+  <div class = 'dashboard-wrapper'>
     <div class = 'container'>
       <div class="row">
-        <div class = 'dashboard-header-2'>
+        <div class = 'dashboard-header'>
           Your products already sold
         </div>
         <% current_user.products.each do |product| %>
           <% if product.status == "sold" %>
             <div class = 'col-xs-12 col-sm-12'>
-              <div class = 'card-product-dashboard white'>
+              <div class = 'card-product-dashboard'>
                 <div class = 'col-xs-3 col-sm-3 center'>
                   <img src="<%= cl_image_path product.pictures[0].url if product.pictures[0] %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
                   <div class="expired"></div>
@@ -193,7 +200,7 @@
 
                 <div class = 'col-xs-6 col-sm-6'>
                   <div><%= product.name %></div>
-                  <div><%= link_to "More Details", product_path(product) %></div>
+                  <div><%= link_to "More Details", product_path(product), class:"grid-item-description-button" %></div>
                 </div>
                 <div class = 'col-xs-3 col-sm-3 center'>
                   <div class = 'card-product-dashboard-price'> <%= product.price %> € </div>
