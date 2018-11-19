@@ -47,3 +47,20 @@
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+
+.button-banner-profile{
+  font-size: 20px;
+  background-color: transparent;
+  color: black;
+  margin: 10px;
+  border-right: none;
+  border-left: none;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.button-banner-profile:hover{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}

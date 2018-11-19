@@ -31,7 +31,7 @@
 }
 
 .grid-item-rating{
-  height: 100px;
+  height: 120px;
 }
 
 .grid-item-description{
@@ -77,4 +77,23 @@
 .wrapper-grid{
   background-color: white;
   padding: 20px;
+}
+
+//----------------------------------------------------
+
+.grid-item-profile-value{
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 15px;
+  text-align: center;
+}
+
+.grid-item-profile-options{
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
