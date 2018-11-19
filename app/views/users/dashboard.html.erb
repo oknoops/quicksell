@@ -78,7 +78,11 @@
           <div class = 'col-xs-12 col-sm-12'>
             <div class = 'card-product-dashboard'>
               <div class = 'col-xs-3 col-sm-3 center'>
-                <img src="<%= cl_image_path sale.product.pictures[0].url if sale.product.pictures[0] %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                <% if sale.product.pictures.any? %>
+                  <img src="<%= cl_image_path sale.product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                <% else %>
+                  <h2><i class = "<%= sale.product.category_icon %>"> </i></h2>
+                <% end %>
               </div>
               <div class = 'col-xs-6 col-sm-6'>
                 <div><%= sale.product.name %></div>
@@ -112,7 +116,11 @@
             <div class = 'col-xs-12 col-sm-12'>
               <div class = 'card-product-dashboard'>
                 <div class = 'col-xs-3 col-sm-3 center'>
-                  <img src="<%= cl_image_path product.pictures[0].url if product.pictures[0] %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                  <% if product.pictures.any? %>
+                  <img src="<%= cl_image_path sale.product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                <% else %>
+                  <h2><i class = "<%= product.category_icon %>"> </i></h2>
+                <% end %>
                 </div>
                 <div class = 'col-xs-6 col-sm-6'>
                   <div><%= product.name %></div>
@@ -128,7 +136,11 @@
             <div class = 'col-xs-12 col-sm-12'>
               <div class = 'card-product-dashboard'>
                 <div class = 'col-xs-3 col-sm-3 center'>
-                  <img src="<%= cl_image_path product.pictures[0].url if product.pictures[0] %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                  <% if product.pictures.any? %>
+                  <img src="<%= cl_image_path product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                <% else %>
+                  <h2><i class = "<%= product.category_icon %>"> </i></h2>
+                <% end %>
                   <div class="expired"></div>
                 </div>
 
@@ -161,7 +173,11 @@
             <div class = 'col-xs-12 col-sm-12'>
               <div class = 'card-product-dashboard'>
                 <div class = 'col-xs-3 col-sm-3 center'>
-                  <img src="<%= cl_image_path product.pictures[0].url if product.pictures[0] %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                  <% if product.pictures.any? %>
+                  <img src="<%= cl_image_path product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                <% else %>
+                  <h2><i class = "<%= product.category_icon %>"> </i></h2>
+                <% end %>
                 </div>
                 <div class = 'col-xs-6 col-sm-6'>
                   <div><%= product.name %></div>
@@ -194,7 +210,11 @@
             <div class = 'col-xs-12 col-sm-12'>
               <div class = 'card-product-dashboard'>
                 <div class = 'col-xs-3 col-sm-3 center'>
-                  <img src="<%= cl_image_path product.pictures[0].url if product.pictures[0] %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                  <% if product.pictures.any? %>
+                  <img src="<%= cl_image_path product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                <% else %>
+                  <h2><i class = "<%= product.category_icon %>"> </i></h2>
+                <% end %>
                   <div class="expired"></div>
                 </div>
 
