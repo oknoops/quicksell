@@ -60,20 +60,23 @@
           </div>
         </div>
       </div>
-      <div class = 'col-sm-12'>
-        <div class = 'grid-item grid-item-rating'>
-          <div class = 'grid-item-description'> Rating</div>
-          <div class = 'grid-item-value'>
-            <% current_user.average.times do %>
-              <i class="fas fa-star"></i>
-            <% end %>
-            <% (5 - current_user.average).times do %>
-              <i class="fal fa-star"></i>
-            <% end %>
-          </div>
+    <% end %>
+
+    <div class = 'col-sm-12'>
+      <div class = 'grid-item grid-item-rating'>
+        <div class = 'grid-item-description'> Rating</div>
+        <div class = 'grid-item-value'>
+          <% current_user.average.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <% (5 - current_user.average).times do %>
+            <i class="fal fa-star"></i>
+          <% end %>
         </div>
       </div>
+    </div>
 
+    <% if @user == current_user %>
       <div class = 'col-sm-6'>
         <div class = 'grid-item grid-item-profile-options'>
           <% if policy(@user).destroy? %>
