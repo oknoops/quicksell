@@ -1,10 +1,9 @@
 .button{
   height: 60px !important;
   width: 200px !important;
-  background-color: grey;
   border-radius: 10px;
-  border: none;
-  color: white;
+  border: 1px solid black;
+  color: black;
   margin-top: 30px;
   text-decoration: none!important;
   display: flex;
@@ -15,27 +14,26 @@
 .button-add-money{
   height: 60px;
   width: 200px;
-  background-color: #7CD4E0;
   border-radius: 10px;
   border: none;
-  color: grey;
+  color: black;
   margin-top: 30px;
   text-decoration: none;
+  border: 1px solid black;
 }
 
 .button-alternative{
   height: 60px !important;
   width: 200px !important;
-  background-color: grey;
   border-radius: 10px;
-  border: none;
-  color: white;
+  border: 1px solid black;
+  color: black;
   margin-top: 30px;
   text-decoration: none!important;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .button-banner-search{
