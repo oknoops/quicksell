@@ -8,7 +8,8 @@
 
 .card-product-image{
   background-color: white;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   position: absolute;
   top: 0;
