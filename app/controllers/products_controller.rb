@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
       @products = @products.order("name ASC")
     when "Rating"
       @products = @products.sort_by { |product| product.user.average }
+      @products = @products.inverse
     when "Distance"
       @products = @products.sort_by { |product| product.distance_from(current_user.address) }
     when "Price Ascending"
