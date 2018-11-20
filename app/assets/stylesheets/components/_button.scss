@@ -9,6 +9,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  :hover{
+    font-weight: bold;
+  }
 }
 
 .button-add-money{
@@ -20,6 +23,9 @@
   margin-top: 30px;
   text-decoration: none;
   border: 1px solid black;
+  :hover{
+    font-weight: bold;
+  }
 }
 
 .button-alternative{
@@ -66,3 +72,5 @@
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+
+
