@@ -24,18 +24,16 @@
     <div class="col-md-6">
       <a href="/users/<%= @product.user.id %>" style = "text-decoration: none">
         <div class= 'card-product'>
-          <div class = card-product-image style = "background-image: url(<%= cl_image_path @product.user.profile_picture if @product.user.profile_picture? %>);">
-
-          </div>
+          <div class = card-product-image style = "background-image: url(<%= cl_image_path @product.user.profile_picture if @product.user.profile_picture? %>);"></div>
           <div class = 'card-product-description'>
             <div class = 'card-product-description-name'> <%= @product.user.first_name %> </div>
             <div class="user-average-card">
-            <% @product.user.average.times do %>
-              <i class="fas fa-star"></i>
-            <% end %>
-            <% (5 - @product.user.average).times do %>
-              <i class="far fa-star"></i>
-            <% end %>
+              <% @product.user.average.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - @product.user.average).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
             </div>
           </div>
         </div>
@@ -43,7 +41,7 @@
     </div>
 
     <div class="col-md-8 col-md-offset-2">
-      <h3> Please rate the transaction on this object with this user </h3>
+      <h3> How did the sale go with <%= @product.user.first_name %>?  </h3>
       <%= simple_form_for [@product, @sale, @review] do |f| %>
         <%= f.input :rating %>
         <%= f.input :description %>
