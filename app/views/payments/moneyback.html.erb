@@ -22,6 +22,7 @@
         <div class="new-form">
         <h2>Thank you!</h2>
         <p><strong><%= (params[:amount])%> €</strong> has been withdrawn from your wallet and will soon be arriving on IBAN: <%= (params[:card]) %></p>
+        <%= link_to "Back to shop", products_path, class: "button" %>
         </div>
       </div>
     </div>
