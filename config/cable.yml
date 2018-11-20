@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("redis://rediscloud:zzTtycThgucqFHMR5F2UZ6snJ5dj1KnJ@redis-13292.c72.eu-west-1-2.ec2.cloud.redislabs.com:13292") %>
+  url: <%= ENV.fetch("redis://rediscloud:zzTtycThgucqFHMR5F2UZ6snJ5dj1KnJ@redis-13292.c72.eu-west-1-2.ec2.cloud.redislabs.com:13292") { "redis://localhost:6379/1" } %>
   channel_prefix: quicksell_production
