@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :reviews
-  has_many :products
-  has_many :sales
+  has_many :reviews, dependent: :destroy
+  has_many :products, dependent: :destroy
+  has_many :sales, dependent: :destroy
+  has_many :messages, dependent: :destroy
   monetize :wallet_cents
   mount_uploader :profile_picture, ProfilePictureUploader
   validates_presence_of :first_name, :message => "Don't forget your first name"
@@ -36,11 +37,11 @@ class User < ApplicationRecord
     end
   end
 
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
 
-  private
+  # private
 
-    def send_welcome_email
-      UserMailer.welcome(self).deliver_now
-    end
+  #   def send_welcome_email
+  #     UserMailer.welcome(self).deliver_now
+  #   end
   end

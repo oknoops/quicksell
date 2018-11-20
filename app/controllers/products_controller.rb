@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   helper_method :sort_direction
 
   def index
+    @chat_room = ChatRoom.first
     if params[:km].present? && params[:category].present?
       @products = policy_scope(Product).joins(:user).where("products.category ilike ?", params[:category]).near(current_user.address, params[:km])
     elsif params[:km].present?
@@ -18,7 +19,7 @@ class ProductsController < ApplicationController
     when "Name"
       @products = @products.order("name ASC")
     when "Rating"
-      @products = @products.sort_by { |product| product.user.average }
+      @products = @products.sort_by { |product| product.user.average }.reverse!
     when "Distance"
       @products = @products.sort_by { |product| product.distance_from(current_user.address) }
     when "Price Ascending"

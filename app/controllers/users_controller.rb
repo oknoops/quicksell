@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @chat_rooms = ChatRoom.all
     current_user.products.each { |p|  p.check_date }
     if current_user.level_up?
       flash[:notice] = "Congrats, you leveled up. Here are 20 €"

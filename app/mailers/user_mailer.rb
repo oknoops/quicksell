@@ -9,6 +9,7 @@ class UserMailer < ApplicationMailer
   #   @user = user  # Instance variable => available in view
 
   #   mail(to: @user.email, subject: 'Welcome to Quick Sale')
-  #   # This will render a view in `app/views/user_mailer`!
+    # This will render a view in `app/views/user_mailer`!
+
   # end
 end
