@@ -2,15 +2,18 @@
 
 <div class = 'banner products'>
   <h1> Quick Sell</h1>
+  <h3>
+    <span id="banner-typed-text"></span>
+  </h3>
 
-  <h3> Buy and sell easily, quickly and simply!</h3>
+  <!-- <h3> Buy and sell easily, quickly and simply!</h3> -->
 
   <div class='new-form'>
     <%= form_tag products_path(anchor: 'list'), method: :get do %>
       <% if user_signed_in? %>
-        <%= text_field_tag :km, nil, placeholder: 'Search km' %>
+        As far as <%= select_tag :km, options_for_select(["", "1", "5", "10", "15", "20", "50"])%> km in:
       <% end %>
-      <%= select_tag :category, options_for_select([ "Books and Magazine", "Movies and Video Games", "High-Tech","Toys and Youth","House and Pets","Beauty and Wellbeing","Retail", "Clothing and Fashion", "Sport and Leisure", "Cars and Mechanics", "Handmade"].sort), include_blank: true%><br>
+      <%= select_tag :category, options_for_select([ "Books and Magazine", "Movies and Video Games", "High-Tech","Toys and Youth","House and Pets","Beauty and Wellbeing","Retail", "Clothing and Fashion", "Sport and Leisure", "Cars and Mechanics", "Handmade"].sort), include_blank: true%> <i class="fas fa-tags"></i> <br>
       <%= submit_tag "Find Your Happiness", class: "button-banner-search"%>
     <% end %>
   </div>

@@ -1,3 +1,5 @@
+import { loadDynamicBannerText } from '../components/banner';
+loadDynamicBannerText();
 import "bootstrap";
 import $ from 'jquery';
 import {datetimepicker} from 'eonasdan-bootstrap-datetimepicker';
