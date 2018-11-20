@@ -41,3 +41,5 @@ gem "geocoder"
 gem 'money-rails'
 gem 'pundit'
 gem 'stripe'
+gem 'sprockets-es6'
+gem 'sprockets', '>= 3.0.0'
