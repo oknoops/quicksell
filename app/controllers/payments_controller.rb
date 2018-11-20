@@ -8,6 +8,11 @@ class PaymentsController < ApplicationController
   def confirm
     @amount = Sale.new
     authorize @amount
+    @amount = (params[:amount].to_f * 100).to_i
+    if @amount < 0.5
+      flash[:alert] = "Amount must be higher than 50 cents"
+      redirect_to new_payment_path
+    end
   end
 
   def create
