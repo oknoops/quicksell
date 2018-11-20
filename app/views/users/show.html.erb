@@ -66,10 +66,10 @@
       <div class = 'grid-item grid-item-rating'>
         <div class = 'grid-item-description'> Rating</div>
         <div class = 'grid-item-value'>
-          <% current_user.average.times do %>
+          <% @user.average.times do %>
             <i class="fas fa-star"></i>
           <% end %>
-          <% (5 - current_user.average).times do %>
+          <% (5 - @user.average).times do %>
             <i class="fal fa-star"></i>
           <% end %>
         </div>

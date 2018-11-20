@@ -14,8 +14,8 @@ class SalesController < ApplicationController
       flash[:notice] = "Items succesfully bought"
       redirect_to dashboard_path #TODO
     else
-      flash[:alert] = "You don't have enough money"
-      redirect_to product_path(@sale.product)
+      flash[:alert] = "You don't have enough money, add some to your wallet"
+      redirect_to new_payment_path
     end
   end
 
