@@ -1,7 +1,6 @@
 class SalesController < ApplicationController
   before_action :set_sale_and_product, only: [:show, :destroy]
 
-
   def show
     authorize @sale
   end
