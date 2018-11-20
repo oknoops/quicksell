@@ -10,5 +10,6 @@ class UserMailer < ApplicationMailer
 
   #   mail(to: @user.email, subject: 'Welcome to Quick Sale')
     # This will render a view in `app/views/user_mailer`!
+
   # end
 end

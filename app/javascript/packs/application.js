@@ -12,3 +12,4 @@ import {datetimepicker} from 'eonasdan-bootstrap-datetimepicker';
   console.log(  $('#datetimepicker'))
 import { loadDynamicBannerText } from '../components/banner';
 loadDynamicBannerText();
+

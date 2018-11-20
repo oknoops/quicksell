@@ -6,6 +6,8 @@
       <%= link_to "My Dashboard", dashboard_path, class:"column-footer-details"%>
       <%= link_to "My Profile Page", user_path(current_user), class:"column-footer-details" %>
       <%= link_to "Sign Out", destroy_user_session_path, class:"column-footer-details" %>
+    <% else %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "column-footer-details" %>
     <% end %>
   </div>
 
