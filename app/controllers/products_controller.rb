@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @chat_room = ChatRoom.new
     @picture = Picture.new
     unless @product.longitude.nil?
       @markers = [{

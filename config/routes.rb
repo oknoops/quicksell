@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'payments/confirm', to: 'payments#confirm'
   get 'payments/retrieve', to: 'payments#retrieve'
   get 'payments/moneyback', to: 'payments#moneyback'
-  resources :chat_rooms, only: [:create, :show] do
+  resources :chat_rooms, only: [:index, :create, :show] do
     resources :messages, only: [:create]
   end
    #these are handled by devise

@@ -1,0 +1,20 @@
+<div class="ui segment">
+ <h3>Mailbox</h3>
+ <div class="ui list">
+  <div class=”item”>
+   <% @chat_rooms.each do |chat_room| %>
+   <% if chat_room.sender_id == current_user.id || chat_room.recipient_id == current_user.id %>
+    <% if chat_room.sender_id == current_user.id %>
+      <% recipient = User.find(chat_room.recipient_id) %>
+    <% else %>
+      <% recipient = User.find(chat_room.sender_id) %>
+    <% end %>
+    <%= recipient.first_name %>
+    <%= chat_room.messages.last.user.first_name %>
+    <%= chat_room.messages.last.content %>
+    <%= link_to "reply", chat_room_path(chat_room) %>
+   <% end %>
+  <% end %>
+  </div>
+ </div>
+</div>
