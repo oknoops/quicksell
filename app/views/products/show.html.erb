@@ -73,10 +73,10 @@
         <div class="col-sm-12">
           <div class = 'options-product-show'>
             <div>
-              <%= link_to "Delete", product_path(@product), class: 'button-banner-profile', method: :delete, data: { confirm: "Are you sure you want to delete this product?" } %>
+              <%= link_to "Edit",edit_product_path(@product), class: 'button-banner-profile' %>
             </div>
             <div>
-              <%= link_to "Edit",edit_product_path(@product), class: 'button-banner-profile' %>
+              <%= link_to "Delete", product_path(@product), class: 'button-banner-profile', method: :delete, data: { confirm: "Are you sure you want to delete this product?" } %>
             </div>
           </div>
         </div>
@@ -136,14 +136,10 @@
     showSlides(slideIndex += n);
   }
 
-  console.log("Test")
-
   // Thumbnail image controls
   function currentSlide(n) {
     showSlides(slideIndex = n);
   }
-
-  console.log("Test")
 
   function showSlides(n) {
     var i;
@@ -162,8 +158,6 @@
     dots[slideIndex-1].className += " active";
     captionText.innerHTML = dots[slideIndex-1].alt;
   }
-
-  console.log("Test")
 
 </script>
 
