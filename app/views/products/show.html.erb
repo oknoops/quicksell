@@ -16,7 +16,6 @@
 
       <div class="caption-container">
         <% if @product.user == current_user %>
-          <%= link_to "<i class='fas fa-trash-alt'></i>".html_safe, product_picture_path(@product), class: "button-product-image", method: :delete, data: { confirm: "Are you sure? Picture won't appear anymore" }  %>
           <%= link_to "<i class='fas fa-plus-square'></i>".html_safe, new_product_picture_path(@product), class: "button-product-image" %>
         <% end %>
       </div>
@@ -26,9 +25,16 @@
       <% @product.pictures.each_with_index do |picture, index| %>
         <div class="column cursor demo" style="background-image: url(<%= cl_image_path picture.url %>); width: 8%" onclick="currentSlide(1)" alt="Picture">
         </div>
+        <%= link_to "<i class='fas fa-trash-alt'></i>".html_safe, product_picture_path(@product, picture), class: "button-product-image", method: :delete, data: { confirm: "Are you sure? Picture won't appear anymore" }  %>
       <% end %>
     </div>
   </div>
+<% else %>
+  <% if @product.user == current_user %>
+    <div class="center">
+      <%= link_to "Add a Picture".html_safe, new_product_picture_path(@product), class: "button" %>
+    </div>
+  <% end %>
 <% end %>
 
 <div class="container product-information">
