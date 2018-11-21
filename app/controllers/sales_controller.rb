@@ -12,7 +12,12 @@ class SalesController < ApplicationController
     authorize @sale
     if @sale.save
       flash[:notice] = "Items succesfully bought"
-      redirect_to dashboard_path #TODO
+      create_notification(@sale.product)
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
+      # redirect_to dashboard_path
     else
       flash[:alert] = "You don't have enough money, add some to your wallet"
       redirect_to new_payment_path
@@ -31,4 +36,11 @@ class SalesController < ApplicationController
     authorize @sale
   end
 
+  def create_notification(product)
+      return if product.user.id == current_user.id
+    Notification.create(user_id: product.user.id,
+                          subscribed_user_id: current_user.id,
+                          product_id: product.id,
+                          notification_type: 'sale')
+  end
 end

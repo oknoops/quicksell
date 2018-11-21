@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   helper_method :sort_direction
 
   def index
-    @chat_room = ChatRoom.first
     if params[:km].present? && params[:category].present?
       @products = policy_scope(Product).joins(:user).where("products.category ilike ?", params[:category]).near(current_user.address, params[:km])
     elsif params[:km].present?
