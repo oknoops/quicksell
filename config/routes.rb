@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  mount ActionCable.server => "/cable"
   get 'chat_rooms/show'
   get 'products/search', to: 'products#search'
   devise_for :users

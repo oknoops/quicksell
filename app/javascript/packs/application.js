@@ -11,6 +11,7 @@ import {datetimepicker} from 'eonasdan-bootstrap-datetimepicker';
   });
   console.log(  $('#datetimepicker'))
 import { loadDynamicBannerText } from '../components/banner';
+
 if(document.querySelector('.banner')) { loadDynamicBannerText(); }
 
 function scrollLastMessageIntoView() {
@@ -23,3 +24,4 @@ function scrollLastMessageIntoView() {
   }
 }
 if(document.querySelector('.create-message')){ scrollLastMessageIntoView();}
+
