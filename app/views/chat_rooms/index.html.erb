@@ -10,9 +10,11 @@
       <% recipient = User.find(chat_room.sender_id) %>
     <% end %>
     <%= recipient.first_name %>
+    <% if chat_room.messages.any?  %>
     <%= chat_room.messages.last.user.first_name %>
     <%= chat_room.messages.last.content %>
     <%= link_to "reply", chat_room_path(chat_room) %>
+    <% end %>
    <% end %>
   <% end %>
   </div>

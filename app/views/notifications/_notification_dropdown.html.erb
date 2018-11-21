@@ -1,0 +1,23 @@
+
+  <div class="dropdown notification-dropdown">
+    <button class="btn btn-default dropdown-toggle" type='button' id= 'dropdownMenu1' data-toggle='dropdown' aria-haspopup= true, aria-expanded=true >
+      <%= current_user.notifications.where(read: false).count %>
+      <span class="glyphicon glyphicon-flag"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby='dropdownMenu1'>
+      <li class="dropdown-header text-center">Notifications</li>
+        <% current_user.notifications.each do |notification| %>
+        <% unless notification.read? %>
+          <li>
+            <% notification_sender = User.find(notification.subscribed_user_id) %>
+            <% if notification.notification_type == "message" %>
+              <%= link_to "#{notification_sender.first_name} sent you a message", link_through_path(notification) %>
+            <% else %>
+              <%= link_to "#{notification_sender.first_name} has bought one of your products", link_through_path(notification) %>
+            <% end %>
+          </li>
+        <% end %>
+        <% end %>
+    </ul>
+  </div>
+

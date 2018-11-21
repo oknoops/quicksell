@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'notifications/link_through'
   mount ActionCable.server => "/cable"
   get 'chat_rooms/show'
   get 'products/search', to: 'products#search'
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: [:index, :create, :show] do
     resources :messages, only: [:create]
   end
+  get 'notifications/:id/link_through', to: 'notifications#link_through',
+                                        as: :link_through
    #these are handled by devise
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
