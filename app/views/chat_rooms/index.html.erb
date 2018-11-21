@@ -17,7 +17,7 @@
               </div>
               <div class = 'message-card-text-content'>
                 <strong>Message:</strong>
-                <%= chat_room.messages.last.content %>
+                <%= chat_room.messages.last.content if chat_room.messages.any? %>
               </div>
               <div class = 'message-card-text-button'>
                 <%= link_to "reply", chat_room_path(chat_room), class:'button-small' %>
