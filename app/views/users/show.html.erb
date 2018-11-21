@@ -79,15 +79,15 @@
     <% if @user == current_user %>
       <div class = 'col-sm-6'>
         <div class = 'grid-item grid-item-profile-options'>
-          <% if policy(@user).destroy? %>
-            <%= link_to 'Delete Profile', user_registration_path(@user), class: "button-banner-profile", method: :delete, data: { confirm: "Are you sure?, all will be deleted. You will lose all the money" }  %>
+          <% if policy(@user).update?%>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: 'button-banner-profile' %>
           <% end %>
         </div>
       </div>
       <div class = 'col-sm-6'>
         <div class = 'grid-item grid-item-profile-options'>
-          <% if policy(@user).update?%>
-            <%= link_to 'Edit Profile', edit_user_path(@user), class: 'button-banner-profile' %>
+          <% if policy(@user).destroy? %>
+            <%= link_to 'Delete Profile', user_registration_path(@user), class: "button-banner-profile", method: :delete, data: { confirm: "Are you sure?, all will be deleted. You will lose all the money" }  %>
           <% end %>
         </div>
       </div>
