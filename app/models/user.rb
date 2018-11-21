@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :sales, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   monetize :wallet_cents
   mount_uploader :profile_picture, ProfilePictureUploader
   validates_presence_of :first_name, :message => "Don't forget your first name"

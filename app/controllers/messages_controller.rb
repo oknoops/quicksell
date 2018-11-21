@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
     @message.chat_room = @chat_room
     @message.user = current_user
     if @message.save
+      create_notification(@message)
       respond_to do |format|
         format.html { redirect_to chat_room_path(@chat_room) }
         format.js
@@ -24,4 +25,17 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:content)
   end
 
+  def create_notification(message)
+    if message.chat_room.recipient_id == current_user.id
+      Notification.create(user_id: message.chat_room.sender_id,
+                            subscribed_user_id: current_user.id,
+                            product_id: message.chat_room.id,
+                            notification_type: 'message')
+    else
+      Notification.create(user_id: message.chat_room.recipient_id,
+                            subscribed_user_id: current_user.id,
+                            product_id: message.chat_room.id,
+                            notification_type: 'message')
+    end
+  end
 end
