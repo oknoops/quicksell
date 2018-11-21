@@ -88,7 +88,6 @@
         </div>
       </div>
     <% end %>
-
   </div>
 </div>
 
@@ -126,10 +125,12 @@
           <% (5 - @product.user.average).times do %>
             <i class="far fa-star"></i>
           <% end %>
-          <%= form_for [@chat_room] do |f| %>
+          <% if user_signed_in? %>
+            <%= form_for [@chat_room] do |f| %>
             <%= f.text_field :recipient_id, value: @product.user.id, type: "hidden" %>
             <%= f.text_field :sender_id, value: current_user.id, type: "hidden" %>
             <%= f.submit "Send Message", class: "button-small" %>
+          <% end %>
         <% end %>
         </div>
       </div>
