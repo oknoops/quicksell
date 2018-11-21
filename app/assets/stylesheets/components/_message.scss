@@ -1,7 +1,5 @@
 .messages {
   font-size: 14px;
-  color: #868686;
-  background-color: #ffffff;
   padding: 20px;
   border: 1px solid #ececec;
   border-top: none;
@@ -16,12 +14,11 @@
   &.right {
     flex-direction: row-reverse;
     .message-content {
-      background-color: #F2F9FC;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
     }
   }
 }
 .message-content {
-  background-color: #F7F7F7;
   border-radius: 3px;
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
@@ -53,10 +50,11 @@ input.form-control {
   }
 }
 .chat-header {
-  background-color: #4F2F4C;
-  color: white;
+  border: 1px solid #ececec;
+  background-color: white;
+  color: black;
   padding: 10px 20px;
-  margin-top: 10px;
+  margin-top: 20px;
   h4 {
     margin: 0;
   }
