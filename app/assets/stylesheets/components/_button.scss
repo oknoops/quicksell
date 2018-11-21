@@ -14,6 +14,23 @@
   }
 }
 
+.button-small{
+  height: 30px !important;
+  width: 100px !important;
+  font-size: 12px;
+  border-radius: 10px;
+  border: 1px solid black;
+  color: black;
+  text-decoration: none!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  :hover{
+    font-weight: bold;
+    color: black;
+  }
+}
+
 .button-add-money{
   height: 60px;
   width: 200px;
@@ -23,9 +40,11 @@
   margin-top: 30px;
   text-decoration: none;
   border: 1px solid black;
-  :hover{
-    font-weight: bold;
-  }
+}
+
+.button-add-money:hover, .button-small:hover{
+  font-weight: bold;
+  color: black;
 }
 
 .button-alternative{

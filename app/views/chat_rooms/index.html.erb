@@ -1,20 +1,31 @@
-<div class="ui segment">
- <h3>Mailbox</h3>
- <div class="ui list">
-  <div class=”item”>
-   <% @chat_rooms.each do |chat_room| %>
-   <% if chat_room.sender_id == current_user.id || chat_room.recipient_id == current_user.id %>
-    <% if chat_room.sender_id == current_user.id %>
-      <% recipient = User.find(chat_room.recipient_id) %>
-    <% else %>
-      <% recipient = User.find(chat_room.sender_id) %>
-    <% end %>
-    <%= recipient.first_name %>
-    <%= chat_room.messages.last.user.first_name %>
-    <%= chat_room.messages.last.content %>
-    <%= link_to "reply", chat_room_path(chat_room) %>
-   <% end %>
-  <% end %>
+<div class = 'container'>
+  <div class="ui segment">
+    <h2>Your Messages</h2>
+    <div class="ui list">
+      <div class=”item”>
+        <% @chat_rooms.each do |chat_room| %>
+          <% if chat_room.sender_id == current_user.id || chat_room.recipient_id == current_user.id %>
+            <% if chat_room.sender_id == current_user.id %>
+              <% recipient = User.find(chat_room.recipient_id) %>
+            <% else %>
+              <% recipient = User.find(chat_room.sender_id) %>
+            <% end %>
+            <div class = 'message-card'>
+              <div class = 'message-card-text-name'>
+                <strong>From:</strong>
+                <%= recipient.first_name %>
+              </div>
+              <div class = 'message-card-text-content'>
+                <strong>Message:</strong>
+                <%= chat_room.messages.last.content %>
+              </div>
+              <div class = 'message-card-text-button'>
+                <%= link_to "reply", chat_room_path(chat_room), class:'button-small' %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
- </div>
 </div>

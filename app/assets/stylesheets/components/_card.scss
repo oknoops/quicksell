@@ -82,6 +82,35 @@
   font-weight: lighter;
 }
 
+//-------------------------------------------------------------------------
+.message-card{
+  position: relative;
+  min-height: 100px;
+  margin: 20px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.message-card-text-name{
+  min-width: 200px;
+  padding-left: 10px;
+}
+
+.message-card-text-content{
+  font-size: 15px;
+}
+
+.message-card-text-button{
+  display: flex;
+  justify-content: center;
+  min-width: 200px;
+}
+
+//------------------------------------------------------------------------
+
 .center{
   text-align: center;
   display: flex;
