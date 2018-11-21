@@ -1,9 +1,9 @@
-
-  <div class="dropdown notification-dropdown">
-    <button class="btn btn-default dropdown-toggle" type='button' id= 'dropdownMenu1' data-toggle='dropdown' aria-haspopup= true, aria-expanded=true >
+<div class="navbar-wagon-item">
+  <div class="dropdown navbar-wagon-link navbar-wagon-item">
+    <div class="dropdown-toggle" id= 'dropdownMenu1' data-toggle='dropdown' aria-haspopup= true, aria-expanded=true >
+      <i class="fas fa-globe"></i>
       <%= current_user.notifications.where(read: false).count %>
-      <span class="glyphicon glyphicon-flag"></span>
-    </button>
+    </div>
     <ul class="dropdown-menu" aria-labelledby='dropdownMenu1'>
       <li class="dropdown-header text-center">Notifications</li>
         <% current_user.notifications.each do |notification| %>
@@ -16,8 +16,8 @@
               <%= link_to "#{notification_sender.first_name} has bought one of your products", link_through_path(notification) %>
             <% end %>
           </li>
-        <% end %>
+          <% end %>
         <% end %>
     </ul>
   </div>
-
+</div>
