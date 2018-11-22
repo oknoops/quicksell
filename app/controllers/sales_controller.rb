@@ -13,11 +13,7 @@ class SalesController < ApplicationController
     if @sale.save
       flash[:notice] = "Items succesfully bought"
       create_notification(@sale.product)
-      respond_to do |format|
-        format.html { redirect_to root_path }
-        format.js
-      end
-      # redirect_to dashboard_path
+      redirect_to dashboard_path      # redirect_to dashboard_path
     else
       flash[:alert] = "You don't have enough money, add some to your wallet"
       redirect_to new_payment_path
