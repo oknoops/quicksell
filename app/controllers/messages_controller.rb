@@ -6,7 +6,9 @@ class MessagesController < ApplicationController
     @message.chat_room = @chat_room
     @message.user = current_user
     if @message.save
+    unless User.find(@message.chat_room.sender_id).notifications.any? { |n| n.read == false && n.subscribed_user_id == current_user.id && n.notification_type == "message"}
       create_notification(@message)
+    end
       respond_to do |format|
         format.html { redirect_to chat_room_path(@chat_room) }
         format.js
