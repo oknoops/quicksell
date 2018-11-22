@@ -27,15 +27,20 @@ class MessagesController < ApplicationController
 
   def create_notification(message)
     if message.chat_room.recipient_id == current_user.id
-      Notification.create(user_id: message.chat_room.sender_id,
+      unless User.find { |user| user.id == message.chat_room.sender_id || user.id == message.chat_room.recipient_id }.notifications.any? { |n| n.read == false && n.subscribed_user_id == current_user.id && n.notification_type == "message"}
+        Notification.create(user_id: message.chat_room.sender_id,
                             subscribed_user_id: current_user.id,
                             product_id: message.chat_room.id,
                             notification_type: 'message')
+      end
+
     else
-      Notification.create(user_id: message.chat_room.recipient_id,
+      unless User.find { |user| user.id == message.chat_room.sender_id || user.id == message.chat_room.recipient_id }.notifications.any? { |n| n.read == false && n.subscribed_user_id == current_user.id && n.notification_type == "message"}
+        Notification.create(user_id: message.chat_room.recipient_id,
                             subscribed_user_id: current_user.id,
                             product_id: message.chat_room.id,
                             notification_type: 'message')
+      end
     end
   end
 end
