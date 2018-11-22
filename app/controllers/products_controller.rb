@@ -54,6 +54,7 @@ class ProductsController < ApplicationController
     @product.user = current_user
     authorize @product
     if @product.save
+      flash[:notice] = "Product succesfully created"
       redirect_to new_product_picture_path(@product)
     else
       render :new
@@ -67,6 +68,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       @product.check_date
       @product.save!
+      flash[:notice] = "Product succesfully updated"
       redirect_to product_path(@product)
     else
       render :edit

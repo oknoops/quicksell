@@ -33,7 +33,7 @@
           <a href="/products/<%= p.id %>" style = "text-decoration: none">
             <div class= 'card-product'>
               <% if p.pictures.any? %>
-                <div class = card-product-image style = "background-image: url(<%= cl_image_path p.pictures.first.url %>);">
+                <div class = card-product-image style = "background-image: url(<%= cl_image_path(p.pictures.first.url, :width => 600, :crop => "pad") %>);">
                 </div>
               <% else %>
                 <div class = "card-product-image">
