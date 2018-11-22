@@ -22,9 +22,9 @@
         <div class="new-form">
         <h2>Thank you!</h2>
         <p><strong><%= @amount * 0.01 %> €</strong> has been added to your wallet !</p>
+        <div> <%= link_to "Back to shop", products_path, class: "button" %> </div>
         </div>
       </div>
-        <%= link_to "Back to shop", products_path, class: "button" %>
     </div>
   </div>
 </div>

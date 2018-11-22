@@ -95,9 +95,20 @@
                   <% unless sale.review %>
                     <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale), class:"grid-item-description-button" %></div>
                   <% end %>
-                </div>
-                <div class = 'col-xs-3 col-sm-3 center'>
-                  <div class = 'card-product-dashboard-price'> <%= sale.product.price %> € </div>
+                <div class = 'card-product-dashboard-item'>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-map-marker-alt fa-2x logo-product-detail"></i>
+                    <p><%= sale.product.pickup_address %></p>
+                  </div>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-clock fa-2x logo-product-detail"></i>
+                    <p><%= sale.product.pickup_time.strftime("%d/%m/%Y") %></p>
+                    <p><%= sale.product.pickup_time.strftime("%I:%M%p") %></p>
+                  </div>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-money-bill-alt fa-2x logo-product-detail"></i>
+                    <%= product.price %> €
+                  </div>
                 </div>
               </div>
             </div>
@@ -134,8 +145,20 @@
                   <div> <%= product.sale.user.first_name %></div>
                   <div><%= link_to "More Details", product_path(product), class:"grid-item-description-button" %></div>
                 </div>
-                <div class = 'col-xs-3 col-sm-3 center'>
-                  <div class = 'card-product-dashboard-price'> <%= product.price %> € </div>
+                <div class = 'card-product-dashboard-item'>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-map-marker-alt fa-2x logo-product-detail"></i>
+                    <p><%= product.pickup_address %></p>
+                  </div>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-clock fa-2x logo-product-detail"></i>
+                    <p><%= product.pickup_time.strftime("%d/%m/%Y") %></p>
+                    <p><%= product.pickup_time.strftime("%I:%M%p") %></p>
+                  </div>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-money-bill-alt fa-2x logo-product-detail"></i>
+                    <%= product.price %> €
+                  </div>
                 </div>
               </div>
             </div>
@@ -171,8 +194,20 @@
                   <div><%= product.name %></div>
                   <div><%= link_to "More Details", product_path(product), class:"grid-item-description-button" %></div>
                 </div>
-                <div class = 'col-xs-3 col-sm-3 center'>
-                  <div class = 'card-product-dashboard-price'> <%= product.price %> € </div>
+                <div class = 'card-product-dashboard-item'>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-map-marker-alt fa-2x logo-product-detail"></i>
+                    <p><%= product.pickup_address %></p>
+                  </div>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-clock fa-2x logo-product-detail"></i>
+                    <p><%= product.pickup_time.strftime("%d/%m/%Y") %></p>
+                    <p><%= product.pickup_time.strftime("%I:%M%p") %></p>
+                  </div>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-money-bill-alt fa-2x logo-product-detail"></i>
+                    <%= product.price %> €
+                  </div>
                 </div>
               </div>
             </div>
@@ -193,8 +228,20 @@
                   <div><%= product.name %></div>
                   <div><%= link_to "More Details", product_path(product), class:"grid-item-description-button" %></div>
                 </div>
-                <div class = 'col-xs-3 col-sm-3 center'>
-                  <div class = 'card-product-dashboard-price'> <%= product.price %> € </div>
+                <div class = 'card-product-dashboard-item'>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-map-marker-alt fa-2x logo-product-detail"></i>
+                    <p><%= product.pickup_address %></p>
+                  </div>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-clock fa-2x logo-product-detail"></i>
+                    <p><%= product.pickup_time.strftime("%d/%m/%Y") %></p>
+                    <p><%= product.pickup_time.strftime("%I:%M%p") %></p>
+                  </div>
+                  <div class = 'card-product-dashboard-items'>
+                    <i class="fal fa-money-bill-alt fa-2x logo-product-detail"></i>
+                    <%= product.price %> €
+                  </div>
                 </div>
               </div>
             </div>
