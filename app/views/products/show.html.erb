@@ -23,7 +23,7 @@
 
     <div class="row" style="display: flex; justify-content: flex-start;">
       <% @product.pictures.each_with_index do |picture, index| %>
-        <div class="column cursor demo" style="background-image: url(<%= cl_image_path picture.url %>); width: 8%" onclick="currentSlide(1)" alt="Picture">
+        <div class="column cursor demo" style="background-image: url(<%= cl_image_path picture.url %>); width: 8%" onclick="currentSlide(<%= index+1%>)" alt="Picture">
           <% if picture.product.user == current_user %>
             <%= link_to "<i class='fas fa-trash-alt'></i>".html_safe, product_picture_path(@product, picture), class: "button-product-image", method: :delete, data: { confirm: "Are you sure? Picture won't appear anymore" }  %>
           <% end %>
