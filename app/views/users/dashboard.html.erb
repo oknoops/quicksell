@@ -65,44 +65,89 @@
   </div>
 </div>
 
-<hr/>
+
+
+<!-- Here are the product bought and not already picked up -->
 
 <% if current_user.sales.any? %>
-  <div class = 'dashboard-wrapper'>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class = 'dashboard-header'>
-          Products you bought
-        </div>
-        <% current_user.sales.each do |sale| %>
-          <div class = 'col-xs-12 col-sm-12'>
-            <div class = 'card-product-dashboard'>
-              <div class = 'col-xs-3 col-sm-3 center'>
-                <% if sale.product.pictures.any? %>
-                  <img src="<%= cl_image_path sale.product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
-                <% else %>
-                  <h2><i class = "<%= sale.product.category_icon %>"> </i></h2>
-                <% end %>
-              </div>
-              <div class = 'col-xs-6 col-sm-6'>
-                <div><%= sale.product.name %></div>
-                <div>Seller: <%= sale.product.user.first_name %></div>
-                <div><%= link_to "More Details", product_path(sale.product), class:"grid-item-description-button" %></div>
-                <% unless sale.review %>
-                  <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale), class:"grid-item-description-button" %></div>
-                <% end %>
-              </div>
-              <div class = 'col-xs-3 col-sm-3 center'>
-                <div class = 'card-product-dashboard-price'> <%= sale.product.price %> € </div>
+  <% if current_user.sales.select{ |sale| sale.product.status == "pending" }.any? %>
+  <hr/>
+    <div class = 'dashboard-wrapper'>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class = 'dashboard-header'>
+            Products you have to pick up :
+          </div>
+          <% current_user.sales.select{ |sale| sale.product.status == "pending" }.sort_by{ |sale| sale.product.pickup_time }.each do |sale| %>
+            <div class = 'col-xs-12 col-sm-12'>
+              <div class = 'card-product-dashboard'>
+                <div class = 'col-xs-3 col-sm-3 center'>
+                  <% if sale.product.pictures.any? %>
+                    <img src="<%= cl_image_path sale.product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                  <% else %>
+                    <h2><i class = "<%= sale.product.category_icon %>"> </i></h2>
+                  <% end %>
+                </div>
+                <div class = 'col-xs-6 col-sm-6'>
+                  <div><%= sale.product.name %></div>
+                  <div>Seller: <%= sale.product.user.first_name %></div>
+                  <div><%= link_to "More Details", product_path(sale.product), class:"grid-item-description-button" %></div>
+                  <% unless sale.review %>
+                    <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale), class:"grid-item-description-button" %></div>
+                  <% end %>
+                </div>
+                <div class = 'col-xs-3 col-sm-3 center'>
+                  <div class = 'card-product-dashboard-price'> <%= sale.product.price %> € </div>
+                </div>
               </div>
             </div>
-          </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- here are the products to still be retrieved buy the buyer -->
+
+<% if current_user.products.any? {|p| p.status == "pending"} %>
+  <hr/>
+  <div class = 'dashboard-wrapper'>
+    <div class = 'container'>
+      <div class="row">
+        <div class = 'dashboard-header'>
+          Your products to be retreived
+        </div>
+        <% current_user.products.sort_by{ |product| product.pickup_time }.each do |product| %>
+          <% if product.status == "pending" %>
+            <div class = 'col-xs-12 col-sm-12'>
+              <div class = 'card-product-dashboard'>
+                <div class = 'col-xs-3 col-sm-3 center'>
+                  <% if product.pictures.any? %>
+                  <img src="<%= cl_image_path product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                <% else %>
+                  <h2><i class = "<%= product.category_icon %>"> </i></h2>
+                <% end %>
+                </div>
+                <div class = 'col-xs-6 col-sm-6'>
+                  <div><%= product.name %></div>
+                  <div> <%= product.sale.user.first_name %></div>
+                  <div><%= link_to "More Details", product_path(product), class:"grid-item-description-button" %></div>
+                </div>
+                <div class = 'col-xs-3 col-sm-3 center'>
+                  <div class = 'card-product-dashboard-price'> <%= product.price %> € </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <%end%>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
+
+<!-- Here are the product still for sale and some with an expired tag, when the date is expired -->
 <% if current_user.products.any? {|p| p.status == "for-sale" || p.status == "expired"} %>
   <hr/>
   <div class = 'dashboard-wrapper'>
@@ -160,43 +205,47 @@
   </div>
 <% end %>
 
-<% if current_user.products.any? {|p| p.status == "pending"} %>
+  <!-- Here are the product bought and already picked up -->
+<% if current_user.sales.any? %>
+  <% if current_user.sales.select{ | sale| sale.product.status == "sold" }.any? %>
   <hr/>
-  <div class = 'dashboard-wrapper'>
-    <div class = 'container'>
-      <div class="row">
-        <div class = 'dashboard-header'>
-          Your products to be retreived
-        </div>
-        <% current_user.products.each do |product| %>
-          <% if product.status == "pending" %>
+    <div class = 'dashboard-wrapper'>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class = 'dashboard-header'>
+            Products you bought:
+          </div>
+          <% current_user.sales.select{ | sale| sale.product.status == "sold" }.each do |sale| %>
             <div class = 'col-xs-12 col-sm-12'>
               <div class = 'card-product-dashboard'>
                 <div class = 'col-xs-3 col-sm-3 center'>
-                  <% if product.pictures.any? %>
-                  <img src="<%= cl_image_path product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
-                <% else %>
-                  <h2><i class = "<%= product.category_icon %>"> </i></h2>
-                <% end %>
+                  <% if sale.product.pictures.any? %>
+                    <img src="<%= cl_image_path sale.product.pictures[0].url %>" alt="Picture of Image" class = 'card-product-dashboard-image'>
+                  <% else %>
+                    <h2><i class = "<%= sale.product.category_icon %>"> </i></h2>
+                  <% end %>
                 </div>
                 <div class = 'col-xs-6 col-sm-6'>
-                  <div><%= product.name %></div>
-                  <div> <%= product.sale.user.first_name %></div>
-                  <div><%= link_to "More Details", product_path(product), class:"grid-item-description-button" %></div>
+                  <div><%= sale.product.name %></div>
+                  <div>Seller: <%= sale.product.user.first_name %></div>
+                  <div><%= link_to "More Details", product_path(sale.product), class:"grid-item-description-button" %></div>
+                  <% unless sale.review %>
+                    <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale), class:"grid-item-description-button" %></div>
+                  <% end %>
                 </div>
                 <div class = 'col-xs-3 col-sm-3 center'>
-                  <div class = 'card-product-dashboard-price'> <%= product.price %> € </div>
+                  <div class = 'card-product-dashboard-price'> <%= sale.product.price %> € </div>
                 </div>
               </div>
             </div>
-          <% end %>
-        <%end%>
+          <%end%>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
 
-
+<!-- here are the product already sold and picked up -->
 <% if current_user.products.any? {|p| p.status == "sold"} %>
   <hr/>
   <div class = 'dashboard-wrapper'>
