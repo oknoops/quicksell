@@ -7,6 +7,7 @@
     <%= f.label :pickup_time, 'Pickup Time' %>
     <div class='input-group date' id='datetimepicker'>
       <%= f.text_field :pickup_time, class: "form-control" %>
+      <%= f.full_error :pickup_time, class: "alert alert-danger" %>
       <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar"></span>
       </span>
