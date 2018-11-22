@@ -2,7 +2,6 @@ import "bootstrap";
 import $ from 'jquery';
 import {datetimepicker} from 'eonasdan-bootstrap-datetimepicker';
   let varo =  $('#datetimepicker')
-  console.log( varo)
   $('#datetimepicker').datetimepicker({
     locale: 'fr',
     sideBySide: true,

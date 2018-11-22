@@ -8,7 +8,7 @@
         <% end %>
       </div>
       <div class="create-message">
-        <%= simple_form_for [ @chat_room, Message.new ] do |f| %>
+        <%= simple_form_for [ @chat_room, Message.new ], remote: true do |f| %>
         <%= f.input :content, label: false, placeholder: "Enter message here" %>
         <% end %>
       </div>
@@ -18,6 +18,14 @@
 
 <% content_for :after_js do %>
   <script>
+    function scrollLastMessageIntoView() {
+      const messages = document.querySelectorAll('.message');
+      const lastMessage = messages[messages.length - 1];
+
+      if (lastMessage !== undefined) {
+        lastMessage.scrollIntoView();
+      }
+    }
     scrollLastMessageIntoView();
     App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create(
       { channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> },
@@ -26,10 +34,10 @@
           if (data.current_user_id !== <%= current_user.id %>) {
             const messagesContainer = document.querySelector('.messages');
             messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-            scrollLastMessageIntoView();
+           scrollLastMessageIntoView();
           }
         }
       }
-    })
+    )
   </script>
 <% end %>
