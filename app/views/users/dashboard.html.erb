@@ -71,7 +71,7 @@
 
 <% if current_user.sales.any? %>
   <% if current_user.sales.select{ |sale| sale.product.status == "pending" }.any? %>
-  <hr/>
+    <hr/>
     <div class = 'dashboard-wrapper'>
       <div class="container">
         <div class="row align-items-center">
@@ -95,6 +95,7 @@
                   <% unless sale.review %>
                     <div><%= link_to "Add a review", new_product_sale_review_path(sale.product, sale), class:"grid-item-description-button" %></div>
                   <% end %>
+                </div>
                 <div class = 'card-product-dashboard-item'>
                   <div class = 'card-product-dashboard-items'>
                     <i class="fal fa-map-marker-alt fa-2x logo-product-detail"></i>
