@@ -1,0 +1,22 @@
+
+function boomG(messageHTML) {
+
+
+const messagesContainer = document.querySelector('.messages');
+messagesContainer.insertAdjacentHTML('beforeend', messageHTML)
+  const messages = document.querySelectorAll('.message');
+  const lastMessage = messages[messages.length - 1];
+
+  if (lastMessage !== undefined) {
+    lastMessage.scrollIntoView();
+  }
+
+
+document.querySelector('#message_content').value = ""
+
+
+
+}
+
+
+boomG("<%= j render  'messages/message', message: @message, user_is_messages_author: true %>")
