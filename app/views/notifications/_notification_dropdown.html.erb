@@ -11,7 +11,7 @@
         <%= current_user.notifications.where(read: false).count %>
       </div>
     <% end %>
-    <ul class="dropdown-menu" aria-labelledby='dropdownMenu1'>
+    <ul class="dropdown-menu notif-dropdown" aria-labelledby='dropdownMenu1'>
       <li class="dropdown-header text-center">Notifications</li>
         <% current_user.notifications.each do |notification| %>
         <% unless notification.read? %>
@@ -20,9 +20,9 @@
             <% if notification.notification_type == "message" %>
               <%= link_to "#{notification_sender.first_name} sent you a message", link_through_path(notification) %>
             <% elsif notification.notification_type == "sale" %>
-              <%= link_to "#{notification_sender.first_name} has bought one of your products", link_through_path(notification) %>
+              <%= link_to "#{notification_sender.first_name} bought one of your products", link_through_path(notification) %>
             <% elsif notification.notification_type == "expired"  %>
-              <%= link_to "#{notification.product.name} has gone expired, edit its pickup time", link_through_path(notification) %>
+              <%= link_to "#{notification.product.name} expired, modify its pickup time", link_through_path(notification) %>
             <% else%>
               <%= link_to "Have you picked up #{notification.product.name} from #{notification_sender.first_name}? Please review this transaction", link_through_path(notification) %>
             <% end %>
